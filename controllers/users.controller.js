@@ -20,10 +20,12 @@ module.exports.doCreate = (req, res, next) => {
           }
         });
       } else {
+        console.log(req.body)
         user = new User(req.body);
+        
         return user.save()
           .then(user => {
-            res.redirect('auth/signup');
+            res.render('auth/welcome');
           });
       }
     })

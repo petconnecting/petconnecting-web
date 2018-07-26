@@ -10,11 +10,33 @@ const passport = require('passport');
 const favicon = require('serve-favicon');
 
 require('./configs/db.configs');
+require('./configs/hbs.config');
+require('./configs/passport.config');
+
+const app = express();
+
+app.use(session({
+  secret: 'esto es ultra secreto por favor discrecion',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: false,
+    httpOnly: true,
+    maxAge: 60 * 60 * 24 * 1000
+  }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  res.locals.session = req.user;
+  next();
+})
 
 const usersRouter = require('./routes/users.routes');
 const indexRouter = require('./routes/index.routes')
+const sessionsRouter = require('./routes/sessions.routes')
 
-const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +50,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.use('/', indexRouter);
-app.use('/', usersRouter)
+app.use('/users', usersRouter);
+app.use('/sessions', sessionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
