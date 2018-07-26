@@ -9,7 +9,7 @@ const favicon = require('serve-favicon');
 
 
 
-const indexRouter = require('./routes/index');
+const indexRouter = require('./routes/users.routes');
 
 const app = express();
 
