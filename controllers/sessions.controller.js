@@ -17,8 +17,8 @@ module.exports.doCreate = (req, res, next) => {
     res.render("index", {
       user: new User(req.body),
       errors: {
-        "email": "Can't be blank",
-        "password": "Can't be blank"
+        "email": "Error de autentificación",
+        "password": "Error de autentificación"
       }
     })
   } else {
@@ -48,9 +48,7 @@ module.exports.doCreate = (req, res, next) => {
         } else {
           res.render("sessions/create", {
             user: new User(req.body),
-            errors: {
-              "email": "Does not exist"
-            }
+            errors: error.errors
           })
         }
       })

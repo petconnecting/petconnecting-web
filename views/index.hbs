@@ -1,4 +1,3 @@
-
 <style>
     .navbar-header {
         width: 100%;
@@ -24,14 +23,24 @@
             <a class="navbar-brand" href="#">PetConnecting</a>
             <div class="right-content">
                 <form class="formularioMolon" method="post" action="sessions/create">
-                    <input type="text" name="email" placeholder="Email.."/>
+
+                    <input type="text" name="email" placeholder="Email.." /> 
+                    {{#if errors.email}}
+                    <p>{{ errors.email }}</p>
+                    {{/if}}
+
                     <input type="password" name="password" placeholder="Password.." />
+                     {{#if errors.password}}
+                    <p>{{errors.password}}</p>
+                    {{/if}}
+
                     <button type="submit">Login</button>
                 </form>
 
-                <button type="submit"><a href="/users/signup">Sign up</a></button>
+                <button type="submit">
+                    <a href="/users/signup">Sign up</a>
+                </button>
             </div>
         </div>
     </div>
 </div>
-
