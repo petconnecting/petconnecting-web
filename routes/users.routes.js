@@ -1,19 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const userController = require('../controllers/users.controller')
 
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'PetConnecting' });
-});
-
-router.get('/signup', function(req, res, next){
-  res.render('auth/signup');
-})
-
-router.get('/login', function(req, res, next){
-  res.render('auth/login');
-})
-
+router.get('/signup', userController.create)
+router.post('/signup', userController.doCreate)
 
 module.exports = router;

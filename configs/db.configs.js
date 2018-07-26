@@ -1,6 +1,6 @@
 const moongoose = require('mongoose');
 
-const DB_NAME = 'user'
+const DB_NAME = 'userpet'
 const MONGODB_URI = `mongodb://127.0.0.1:27017/${DB_NAME}`
 
 moongoose.connect(MONGODB_URI, {useNewUrlParser: true})
