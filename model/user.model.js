@@ -2,61 +2,60 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const SALT_WORK_FACTOR = 10;
 
-const userSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: "Name is required"
-    },
-
-    email: {
-      type: String,
-      required: "Email is required",
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        "Please fill a valid email address"
-      ],
-      unique: true
-    },
-
-    password: {
-      type: String,
-      required: "Password is required"
-    },
-
-    age: {
-      type: Number,
-      required: true,
-      min: [18, 'No eres mayor de edad']
-    },
-
-    social: {
-      instagramId: String
-    },
-    token: {
-      type: String
-    },
-
-    active: {
-      type: Boolean,
-      default: false
-    }
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: "Name is required"
   },
-  { timestamps: true }
-);
+
+  email: {
+    type: String,
+    required: "Email is required",
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      "Please fill a valid email address"
+    ],
+    unique: true
+  },
+
+  password: {
+    type: String,
+    required: "Password is required"
+  },
+
+  age: {
+    type: Number,
+    required: true,
+    min: [18, 'No eres mayor de edad']
+  },
+
+  social: {
+    instagramId: String
+  },
+  token: {
+    type: String
+  },
+
+  active: {
+    type: Boolean,
+    default: false
+  }
+}, {
+  timestamps: true
+});
 
 function generateToken() {
   return (
     Math.random()
-      .toString(36)
-      .substr(2) +
+    .toString(36)
+    .substr(2) +
     Math.random()
-      .toString(36)
-      .substr(2)
+    .toString(36)
+    .substr(2)
   );
 }
 
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function (next) {
   if (this.isNew) {
     this.token = generateToken();
   }
@@ -77,7 +76,7 @@ userSchema.pre("save", function(next) {
   }
 });
 
-userSchema.methods.checkPassword = function(password) {
+userSchema.methods.checkPassword = function (password) {
   return bcrypt.compare(password, this.password);
 };
 
