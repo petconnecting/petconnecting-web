@@ -65,10 +65,10 @@ const userSchema = new mongoose.Schema({
 
             // Crossed: id Reference to the other dog to cross
 
-            {
+            time: {
                 timestamps: true
             }
-        );
+});
 
 
         const Horse = mongoose.model("Horse", userSchema); module.exports = Horse;
