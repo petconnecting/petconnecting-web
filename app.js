@@ -34,8 +34,9 @@ app.use((req, res, next) => {
 })
 
 const usersRouter = require('./routes/users.routes');
-const indexRouter = require('./routes/index.routes')
-const sessionsRouter = require('./routes/sessions.routes')
+const indexRouter = require('./routes/index.routes');
+const sessionsRouter = require('./routes/sessions.routes');
+const animalsRouter = require('./routes/animals.routes');
 
 
 // view engine setup
@@ -50,8 +51,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/sessions', sessionsRouter);
+app.use('/animals', animalsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

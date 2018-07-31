@@ -30,7 +30,10 @@ const userSchema = new mongoose.Schema({
   },
 
   social: {
-    instagramId: String
+    instagramId: String,
+    //Cambios de carlos, al final cuando usemos instagram tenemos que integrar los códigos siguientes
+    //accessToken: String,
+    //refreshToken: String
   },
   token: {
     type: String
