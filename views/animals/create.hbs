@@ -6,7 +6,7 @@
 
   <form action="/animals/create" method="POST">
 
-    <label class="mr-sm-2" for="inlineFormCustomSelect">TYPE</label>
+      <label class="mr-sm-2" for="inlineFormCustomSelect">TYPE</label>
     <select type="text" name="type" value="{{ animals.type }}">
       <option selected>Choose...</option>
       <option value="DOG">Dog</option>
@@ -16,14 +16,34 @@
       <p>{{ errors.type }}</p>
     {{/if}}
 
+      <div class="form-group row">
+      <label for="example-number-input" class="col-2 col-form-label">Name</label>
+      <div class="col-2">
+        <input class="form-control" type="text" name="name" value="{{ animals.name }}">
+        {{#if errors.name }}
+      <p>{{ errors.name }}</p>
+      {{/if}}
+      </div>
+
+
     <label class="mr-sm-2" for="inlineFormCustomSelect">RACE</label>
     <select type="text" name="race">
       <option>Choose...</option>
-      <option value="dog">DOG</option>
-      <option value="horse">HORSE</option>
+      <option value="DOG">DOG</option>
+      <option value="HORSE">HORSE</option>
     </select>
     {{#if errors.race }}
       <p>{{ errors.race }}</p>
+    {{/if}}
+
+        <label class="mr-sm-2" for="inlineFormCustomSelect">SEX</label>
+    <select type="text" name="sex" value="{{ animals.sex }}">
+      <option selected>Choose...</option>
+      <option value="MALE">M</option>
+      <option value="FEMALE">F</option>
+    </select>
+    {{#if errors.sex }}
+      <p>{{ errors.sex}}</p>
     {{/if}}
 
     <label for="example-text-input" class="col-2 col-form-label">COLOR</label>
@@ -44,19 +64,17 @@
       </div>
     </div>
 
-    {{!--
-    <div class="form-check form-check-inline">
-      <label for="example-number-input" class="col-2 col-form-label">PEDIGREE</label>
-      <label class="form-check-label">
-        <input class="form-check-input" type="text" name="pedigree" value="{{ animals.pedigree }}"> Yes
-      </label>
-    </div>
+    <label class="mr-sm-2" for="inlineFormCustomSelect">PEDIGREE</label>
+    <select type="text" name="pedigree" value="{{ animals.pedigree }}">
+      <option selected>Choose...</option>
+      <option value="YES">Yes</option>
+      <option value="NO">No</option>
+    </select>
+    {{#if errors.pedigree }}
+      <p>{{ errors.pedigree}}</p>
+    {{/if}}
 
-    <div class="form-check form-check-inline">
-      <label class="form-check-label">
-        <input class="form-check-input" type="text" name="pedigree" value="{{ animals.pedigree }}"> No
-      </label>
-    </div> --}}
+
 
     <div class="form-group">
       <label for="exampleFormControlTextarea1">ACHIEVEMENTS</label>
@@ -74,6 +92,16 @@
       <p>{{ errors.trainer }}</p>
       {{/if}}
       </div>
+
+          <div class="form-group row">
+      <label for="example-number-input" class="col-2 col-form-label">OWNER</label>
+      <div class="col-2">
+        <input class="form-control" type="text" name="ownername" value="{{ animals.ownername }}">
+        {{#if errors.ownername }}
+      <p>{{ errors.ownername }}</p>
+      {{/if}}
+      </div>
+
     </div>
 </div>
 
@@ -84,12 +112,3 @@
 </form>
 
 </div>
-
-{{!-- const mongoose = require("mongoose"); const animalsSchema = new mongoose.Schema( { type: { type: String, enum: ["DOG",
-"HORSE"] }, name: { type: String, required: "Name is required" }, race: { type: String, required: "Race is required" }, sex:
-{ type: String, required: "Sex is required" }, color: { type: String, required: "Color is required" }, datebirth: { type:
-Date, required: "Date birth is required" }, pedigree: { type: Boolean, required: "Pedigree is required" }, microship: { type:
-Boolean, required: "Microship is required" }, achievements: { type: String, }, trainer: { type: String, required: "Name is
-required" }, ownername: { type: String, required: "Name is required" }, //Añadir localización user: { type: mongoose.Schema.Types.ObjectId,
-ref: 'User' } }, { timestamps: true } ); const Animals = mongoose.model("Animals", animalsSchema); module.exports = Animals;
---}}

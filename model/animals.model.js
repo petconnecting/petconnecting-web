@@ -4,8 +4,9 @@ const animalSchema = new mongoose.Schema(
   {
     type: {
       type: String,
-      enum: ["DOG", "HORSE"]
+      required: "type is required"
     },
+
     name: {
       type: String,
       required: "Name is required"
@@ -18,7 +19,7 @@ const animalSchema = new mongoose.Schema(
 
     sex: {
       type: String,
-      required: "Sex is required"
+      enum: ["MALE", "FEMALE"]
     },
 
     color: {
@@ -31,15 +32,10 @@ const animalSchema = new mongoose.Schema(
       required: "Date birth is required"
     },
 
-    pedigree: {
-      type: String,
-      required: "Pedigree is required"
-    },
-
-    microship: {
-      type: String,
-      required: "Microship is required"
-    },
+    // pedigree: {
+    //   type: String,
+    //   enum: ["YES", "NO"]
+    // },
 
     achievements: {
       type: String,
