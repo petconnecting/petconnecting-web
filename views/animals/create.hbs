@@ -105,7 +105,38 @@
         </div>
       </div>
 
+<div class="form-group row">
+          <label for="example-number-input" class="col-2 col-form-label">ADDRESS</label>
+          <div class="col-2">
+            <input class="form-control" type="text" name="address" value="{{ animal.address }}"> {{#if errors.address }}
+            <p>{{ errors.address }}</p>
+            {{/if}}
+          </div>
 
+        </div>
+      </div>
+
+<div class="form-group row">
+          <label for="example-number-input" class="col-2 col-form-label">TOWN</label>
+          <div class="col-2">
+            <input class="form-control" type="text" name="town" value="{{ animals.town }}"> {{#if errors.town }}
+            <p>{{ errors.town }}</p>
+            {{/if}}
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="example-number-input" class="col-2 col-form-label">POSTCODE</label>
+          <div class="col-2">
+            <input class="form-control" type="number" name="postcode" value="{{ animals.postcode }}"> {{#if errors.postcode }}
+            <p>{{ errors.postcode }}</p>
+            {{/if}}
+          </div>
+
+        </div>
+      </div>
       <button type="submit" class="btn btn-default btn-sm">,
         <a href="/animals/list" /> create!</button>
       {{!--
@@ -113,3 +144,4 @@
   </form>
 
   </div>
+

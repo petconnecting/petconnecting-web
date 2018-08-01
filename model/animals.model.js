@@ -1,35 +1,35 @@
-const mongoose = require("mongoose");
+const mongoose = require ('mongoose');
 
-const animalSchema = new mongoose.Schema(
+const animalSchema = new mongoose.Schema (
   {
     type: {
       type: String,
-      required: "type is required"
+      required: 'type is required',
     },
 
     name: {
       type: String,
-      required: "Name is required"
+      required: 'Name is required',
     },
 
     race: {
       type: String,
-      required: "Race is required"
+      required: 'Race is required',
     },
 
     sex: {
       type: String,
-      enum: ["MALE", "FEMALE"]
+      enum: ['MALE', 'FEMALE'],
     },
 
     color: {
       type: String,
-      required: "Color is required"
+      required: 'Color is required',
     },
 
     age: {
       type: Number,
-      required: "Date birth is required"
+      required: 'Date birth is required',
     },
 
     // pedigree: {
@@ -43,23 +43,38 @@ const animalSchema = new mongoose.Schema(
 
     trainer: {
       type: String,
-      required: "Name is required"
+      required: 'Name is required',
     },
 
     ownername: {
       type: String,
-      required: "Name is required"
+      required: 'Name is required',
     },
 
-    //Añadir localización 
-    
+    address: {
+      type: String,
+      required: 'Name is required',
+    },
+
+    town:{
+      type: String,
+      required: 'Town is required'
+    },
+
+    postcode:{
+      type: Number,
+      required: 'Postcode is required',
+    },
+
+    //address: 5 Postcode and town 
+
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
   },
-  { timestamps: true }
+  {timestamps: true}
 );
 
-const Animal = mongoose.model("Animal", animalSchema);
+const Animal = mongoose.model ('Animal', animalSchema);
 module.exports = Animal;

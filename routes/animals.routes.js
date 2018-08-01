@@ -10,6 +10,7 @@ router.get('/list',animalsController.list);
 router.get('/edit/:id', animalsController.edit);
 
 router.post('/:id/doedit', animalsController.doEdit);
+router.post('/:id/delete', animalsController.doDelete);
 
 
 module.exports = router;

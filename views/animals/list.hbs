@@ -11,9 +11,11 @@
     <p class="card-text">{{ this.sex }}</p>
     <p class="card-text">{{ this.pedigree }}</p>
     <p class="card-text">{{ this.achievements }}</p>
+    <p class="card-text">{{this.town}}</p>
+    <p class="card-text">{{this.postcode}}</p>
     <a href="/companies/{{this.id}}" class="text-primary">Details</a>
     <a href="/animals/edit/{{this.id}}" class="text-warning">Edit</a>
-    <form action="/companies/{{ this.id }}/delete" method="post">
+    <form action="/animals/{{ this.id }}/delete" method="post">
       <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
       <a href="#" class="btn btn-primary">Solicitar cruce</a>
   </div>

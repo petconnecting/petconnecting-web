@@ -60,7 +60,7 @@ module.exports.doEdit = (req, res, next) => {
       .then(animal => {
           if(animal) {
               Object.assign(animal, req.body);
-              company.save()
+              animal.save()
                   .then(() => {
                       res.redirect(`/animals/${id}`);
                   })
@@ -80,3 +80,17 @@ module.exports.doEdit = (req, res, next) => {
       })
       .catch(error => next(error));
 };
+
+
+module.exports.doDelete = (req, res, next) => {
+    let id = req.params.id;
+    Animal.findByIdAndRemove(id)
+    .then(()=> {
+        res.redirect('/animals/');
+        console.info('borrao');
+    })
+    .catch(error => {
+        console.error('pos no sa borrao');
+    })
+
+}
