@@ -11,8 +11,8 @@ a {
 
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 body {
-  /* background: url('http://i.imgur.com/Au8To6H.jpg') fixed;
-  background-size: cover; */
+  background: url('http://i.imgur.com/Au8To6H.jpg') fixed;
+  background-size: cover; 
   padding: 0;
   margin: 0;
 }

@@ -2,6 +2,20 @@ const createError = require("http-errors");
 const mongoose = require("mongoose");
 const Animal = require("../model/animals.model");
 
+module.exports.list = (req, res, next) => {
+  Animal.find()
+    .then(animal => {
+      res.render('animals/list', {
+        animal
+      });
+    })
+    .catch(error => {
+      next(error);
+    });
+}
+
+
+
 module.exports.create = (req, res, next) => {
   res.render("animals/create");
 };

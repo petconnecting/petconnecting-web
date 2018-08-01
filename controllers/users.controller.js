@@ -25,7 +25,7 @@ module.exports.doCreate = (req, res, next) => {
         
         return user.save()
           .then(user => {
-            res.render('forms/animalform')
+            res.render('animals/create')
           });
       }
     })
