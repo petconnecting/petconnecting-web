@@ -4,9 +4,9 @@ const Animal = require("../model/animals.model");
 
 module.exports.list = (req, res, next) => {
   Animal.find()
-    .then(animal => {
+    .then(animals => {
       res.render('animals/list', {
-        animal
+        animals
       });
     })
     .catch(error => {
@@ -25,7 +25,7 @@ module.exports.doCreate = (req, res, next) => {
 
   animal
     .save()
-    .then(() => res.redirect("/animals"))
+    .then(() => res.redirect("/animals/list"))
     .catch(error => {
       if (error instanceof mongoose.Error.ValidationError) {
         console.error(error.errors);
@@ -37,4 +37,46 @@ module.exports.doCreate = (req, res, next) => {
         next(error);
       }
     });
+};
+
+module.exports.edit = (req, res, next) => {
+  const id = req.params.id; 
+  Animal.findById(id)
+      .then(animal => {
+          res.render('animals/create',{
+              animal
+          });
+      })
+      .catch((error)=>{
+          next(error)
+      });
+};
+
+module.exports.doEdit = (req, res, next) => {
+  // let company = new Company(req.body);
+  const id = req.params.id;
+
+  Animal.findById(id)
+      .then(animal => {
+          if(animal) {
+              Object.assign(animal, req.body);
+              company.save()
+                  .then(() => {
+                      res.redirect(`/animals/${id}`);
+                  })
+                  .catch(error => {
+                      if(error instanceof mongoose.Error.ValidationError) {
+                          res.render('animals/create', {
+                              animals: animals, 
+                              error: error.errors
+                          });
+                      } else {
+                          next(error);
+                      }
+                  })
+          } else {
+              next(error);
+          }
+      })
+      .catch(error => next(error));
 };

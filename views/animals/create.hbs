@@ -4,111 +4,112 @@
 
   <p class="form-title"> </p>
 
-  <form action="/animals/create" method="POST">
+  <form action=
+  {{#if this.isNew}} 
+  "/animals/create"
+   {{else}} 
+   "/animals/{{this._id}}/doEdit" 
+   {{/if}}
+   method="POST">
 
-      <label class="mr-sm-2" for="inlineFormCustomSelect">TYPE</label>
+    <label class="mr-sm-2" for="inlineFormCustomSelect">TYPE</label>
     <select type="text" name="type" value="{{ animals.type }}">
       <option selected>Choose...</option>
       <option value="DOG">Dog</option>
       <option value="HORSE">Horse</option>
     </select>
     {{#if errors.type }}
-      <p>{{ errors.type }}</p>
+    <p>{{ errors.type }}</p>
     {{/if}}
 
-      <div class="form-group row">
+    <div class="form-group row">
       <label for="example-number-input" class="col-2 col-form-label">Name</label>
       <div class="col-2">
-        <input class="form-control" type="text" name="name" value="{{ animals.name }}">
-        {{#if errors.name }}
-      <p>{{ errors.name }}</p>
-      {{/if}}
+        <input class="form-control" type="text" name="name" value="{{ animals.name }}"> {{#if errors.name }}
+        <p>{{ errors.name }}</p>
+        {{/if}}
       </div>
 
 
-    <label class="mr-sm-2" for="inlineFormCustomSelect">RACE</label>
-    <select type="text" name="race">
-      <option>Choose...</option>
-      <option value="DOG">DOG</option>
-      <option value="HORSE">HORSE</option>
-    </select>
-    {{#if errors.race }}
+      <label class="mr-sm-2" for="inlineFormCustomSelect">RACE</label>
+      <select type="text" name="race">
+        <option>Choose...</option>
+        <option value="DOG">DOG</option>
+        <option value="HORSE">HORSE</option>
+      </select>
+      {{#if errors.race }}
       <p>{{ errors.race }}</p>
-    {{/if}}
+      {{/if}}
 
-        <label class="mr-sm-2" for="inlineFormCustomSelect">SEX</label>
-    <select type="text" name="sex" value="{{ animals.sex }}">
-      <option selected>Choose...</option>
-      <option value="MALE">M</option>
-      <option value="FEMALE">F</option>
-    </select>
-    {{#if errors.sex }}
+      <label class="mr-sm-2" for="inlineFormCustomSelect">SEX</label>
+      <select type="text" name="sex" value="{{ animals.sex }}">
+        <option selected>Choose...</option>
+        <option value="MALE">M</option>
+        <option value="FEMALE">F</option>
+      </select>
+      {{#if errors.sex }}
       <p>{{ errors.sex}}</p>
-    {{/if}}
-
-    <label for="example-text-input" class="col-2 col-form-label">COLOR</label>
-    <div class="col-10">
-      <input class="form-control" type="text" name="color" value="{{ animals.color }}"> 
-      {{#if errors.color }}
-      <p>{{ errors.color }}</p>
       {{/if}}
-    </div>
 
-    <div class="form-group row">
-      <label for="example-number-input" class="col-2 col-form-label">AGE</label>
-      <div class="col-2">
-        <input class="form-control" type="number" name="age" value="{{ animals.age }}">
-        {{#if errors.age }}
-      <p>{{ errors.age }}</p>
-      {{/if}}
+      <label for="example-text-input" class="col-2 col-form-label">COLOR</label>
+      <div class="col-10">
+        <input class="form-control" type="text" name="color" value="{{ animals.color }}"> {{#if errors.color }}
+        <p>{{ errors.color }}</p>
+        {{/if}}
       </div>
-    </div>
 
-    <label class="mr-sm-2" for="inlineFormCustomSelect">PEDIGREE</label>
-    <select type="text" name="pedigree" value="{{ animals.pedigree }}">
-      <option selected>Choose...</option>
-      <option value="YES">Yes</option>
-      <option value="NO">No</option>
-    </select>
-    {{#if errors.pedigree }}
+      <div class="form-group row">
+        <label for="example-number-input" class="col-2 col-form-label">AGE</label>
+        <div class="col-2">
+          <input class="form-control" type="number" name="age" value="{{ animals.age }}"> {{#if errors.age }}
+          <p>{{ errors.age }}</p>
+          {{/if}}
+        </div>
+      </div>
+
+      <label class="mr-sm-2" for="inlineFormCustomSelect">PEDIGREE</label>
+      <select type="text" name="pedigree" value="{{ animals.pedigree }}">
+        <option selected>Choose...</option>
+        <option value="YES">Yes</option>
+        <option value="NO">No</option>
+      </select>
+      {{#if errors.pedigree }}
       <p>{{ errors.pedigree}}</p>
-    {{/if}}
-
-
-
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">ACHIEVEMENTS</label>
-      <textarea class="form-control" type="text" name="achievements" value="{{ animals.achievements }}" rows="3"></textarea>
-      {{#if errors.achievements }}
-      <p>{{ errors.achievements}}</p>
       {{/if}}
-    </div>
 
-    <div class="form-group row">
-      <label for="example-number-input" class="col-2 col-form-label">TRAINER</label>
-      <div class="col-2">
-        <input class="form-control" type="text" name="trainer" value="{{ animals.trainer }}">
-        {{#if errors.trainer }}
-      <p>{{ errors.trainer }}</p>
-      {{/if}}
+
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">ACHIEVEMENTS</label>
+        <textarea class="form-control" type="text" name="achievements" value="{{ animals.achievements }}" rows="3"></textarea> {{#if errors.achievements }}
+        <p>{{ errors.achievements}}</p>
+        {{/if}}
       </div>
 
-          <div class="form-group row">
-      <label for="example-number-input" class="col-2 col-form-label">OWNER</label>
-      <div class="col-2">
-        <input class="form-control" type="text" name="ownername" value="{{ animals.ownername }}">
-        {{#if errors.ownername }}
-      <p>{{ errors.ownername }}</p>
-      {{/if}}
+      <div class="form-group row">
+        <label for="example-number-input" class="col-2 col-form-label">TRAINER</label>
+        <div class="col-2">
+          <input class="form-control" type="text" name="trainer" value="{{ animals.trainer }}"> {{#if errors.trainer }}
+          <p>{{ errors.trainer }}</p>
+          {{/if}}
+        </div>
+
+        <div class="form-group row">
+          <label for="example-number-input" class="col-2 col-form-label">OWNER</label>
+          <div class="col-2">
+            <input class="form-control" type="text" name="ownername" value="{{ animals.ownername }}"> {{#if errors.ownername }}
+            <p>{{ errors.ownername }}</p>
+            {{/if}}
+          </div>
+
+        </div>
       </div>
 
-    </div>
-</div>
 
+      <button type="submit" class="btn btn-default btn-sm">,
+        <a href="/animals/list" /> create!</button>
+      {{!--
+      <input type="submit" value="Instagram" class="btn btn-default btn-sm" /> --}}
+  </form>
 
-<button type="submit" class="btn btn-default btn-sm">,<a href="/animals/list"/> create!</button>
-{{!--
-<input type="submit" value="Instagram" class="btn btn-default btn-sm" /> --}}
-</form>
-
-</div>
+  </div>
