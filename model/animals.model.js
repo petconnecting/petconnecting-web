@@ -66,12 +66,12 @@ const animalSchema = new mongoose.Schema (
       required: 'Postcode is required',
     },
 
-    //address: 5 Postcode and town 
-
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
+
+    image: String
   },
   {timestamps: true}
 );

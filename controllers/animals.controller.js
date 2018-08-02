@@ -2,6 +2,20 @@ const createError = require("http-errors");
 const mongoose = require("mongoose");
 const Animal = require("../model/animals.model");
 
+module.exports.details = (req, res, next) => {
+    const id = req.params.id;
+
+    Animal.findById(id)
+        .then(animal => {
+            res.render('animals/details', {
+                animal
+            });
+        })
+        .catch((error)=>{
+            next(error)
+        });
+}
+
 module.exports.list = (req, res, next) => {
   Animal.find()
     .then(animals => {
@@ -17,15 +31,24 @@ module.exports.list = (req, res, next) => {
 
 
 module.exports.create = (req, res, next) => {
+    console.log('CREATE');
+    
   res.render("animals/create");
 };
 
 module.exports.doCreate = (req, res, next) => {
+    console.log('DO CREATE');
+    
+    
   const animal = new Animal(req.body);
-
-  animal
-    .save()
-    .then(() => res.redirect("/animals/list"))
+    console.log(animal);
+    
+  animal.save()
+    .then(animal =>{
+        console.log(animal);
+        
+        res.redirect('/animals');
+    })
     .catch(error => {
       if (error instanceof mongoose.Error.ValidationError) {
         console.error(error.errors);
@@ -43,7 +66,8 @@ module.exports.edit = (req, res, next) => {
   const id = req.params.id; 
   Animal.findById(id)
       .then(animal => {
-          res.render('animals/create',{
+          //console.log(animal)
+          res.render('animals/edit',{
               animal
           });
       })
@@ -52,22 +76,21 @@ module.exports.edit = (req, res, next) => {
       });
 };
 
-module.exports.doEdit = (req, res, next) => {
-  // let company = new Company(req.body);
+module.exports.doEdit = (req, res, next) => {    
   const id = req.params.id;
 
   Animal.findById(id)
       .then(animal => {
-          if(animal) {
-              Object.assign(animal, req.body);
+          if (animal) {
+            Object.assign(animal, req.body);
               animal.save()
                   .then(() => {
-                      res.redirect(`/animals/${id}`);
+                      res.redirect(`/animals/${id}/details`);
                   })
                   .catch(error => {
                       if(error instanceof mongoose.Error.ValidationError) {
-                          res.render('animals/create', {
-                              animals: animals, 
+                          res.render('animals/edit', {
+                              animal: animal, 
                               error: error.errors
                           });
                       } else {
@@ -75,6 +98,7 @@ module.exports.doEdit = (req, res, next) => {
                       }
                   })
           } else {
+              console.error('No hay animal :(')
               next(error);
           }
       })
@@ -86,11 +110,11 @@ module.exports.doDelete = (req, res, next) => {
     let id = req.params.id;
     Animal.findByIdAndRemove(id)
     .then(()=> {
-        res.redirect('/animals/');
+        res.redirect('/animals');
         console.info('borrao');
     })
     .catch(error => {
         console.error('pos no sa borrao');
     })
 
-}
+};

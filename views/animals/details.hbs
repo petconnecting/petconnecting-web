@@ -1,0 +1,17 @@
+<h1>ANIMAL DETAILS</h1>
+<a href="/animals/create" class="btn btn-success">New Pet</a>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://archive.icann.org/meetings/icann56/cdn.schd.ws/common/img/avatar-empty.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ animal.name }}</h5>
+    <p class="card-text">{{ animal.trainer}}</p>
+    <p class="card-text">{{ animal.ownername }}</p>
+    <p class="card-text">{{ animal.achievements }}</p>
+    <a href="/animals/{{animal._id}}/edit" class="text-warning">Edit</a>
+    
+    <form action="/animals/{{ animal._id }}/delete" method="post">
+        <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
+    </form>
+  </div>
+</div>
