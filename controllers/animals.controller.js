@@ -17,7 +17,7 @@ module.exports.details = (req, res, next) => {
 }
 
 module.exports.list = (req, res, next) => {
-  Animal.find()
+  Animal.find({ user: req.session.currentUser._id })
     .then(animals => {
       res.render('animals/list', {
         animals
@@ -41,7 +41,8 @@ module.exports.doCreate = (req, res, next) => {
     
     
   const animal = new Animal(req.body);
-    console.log(animal);
+
+  animal.user = req.session.currentUser;
     
   animal.save()
     .then(animal =>{
@@ -108,13 +109,35 @@ module.exports.doEdit = (req, res, next) => {
 
 module.exports.doDelete = (req, res, next) => {
     let id = req.params.id;
+    req.idasuprimir = id;
+    req.paquito = 'Paco'
+
     Animal.findByIdAndRemove(id)
     .then(()=> {
+        console.log(req)
         res.redirect('/animals');
-        console.info('borrao');
     })
     .catch(error => {
-        console.error('pos no sa borrao');
+        console.error(error);
     })
-
 };
+
+module.exports.showUserAnimals = (req, res, next) => {
+    console.log(req.session.currentUser._id)
+    let ownerID = req.session.currentUser._id;
+    
+    Animal.find({ user: { $ne: ownerID } })
+    .then(animals => {
+        res.render('animals/userlist', {
+            animals
+        })
+    })
+    .catch(error => {
+        console.error(error)
+        next(error)
+    })
+}
+
+module.exports.warnUser = (req, res, next) => {
+    res.send('Tu eres muy listo')
+}

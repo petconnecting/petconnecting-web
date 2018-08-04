@@ -5,8 +5,8 @@ const path = require ('path');
 
 // Aquí pondríamos el registerPartials con la url de la carpetita
 
-hbs.registerHelper('isSelected', (type, exptected, options) => {
-    if (type.toUpperCase() === exptected.toUpperCase()) {
+hbs.registerHelper('isSelected', (type, expected, options) => {
+    if (type.toUpperCase() === expected.toUpperCase()) {
         return options.fn(this);
     } else {
         return options.inverse(this);

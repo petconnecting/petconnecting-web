@@ -18,31 +18,11 @@
         <div class="form-group row">
             <label for="example-number-input" class="col-2 col-form-label">Name</label>
             <div class="col-2">
-                <input class="form-control" type="text" name="name" value="{{ animal.name }}"> {{#if errors.name }}
+                <input class="form-control" type="text" name="name" value="{{ animal.name }}"> 
+                {{#if errors.name }}
                 <p>{{ errors.name }}</p>
                 {{/if}}
             </div>
-
-
-            <label class="mr-sm-2" for="inlineFormCustomSelect">RACE</label>
-            <select type="text" name="race">
-                <option>Choose...</option>
-                <option value="DOG" {{#isSelected animal.race "DOG" }} selected {{/isSelected}}>DOG</option>
-                <option value="HORSE" {{#isSelected animal.race "HORSE" }} selected {{/isSelected}}>HORSE</option>
-            </select>
-            {{#if errors.race }}
-            <p>{{ errors.race }}</p>
-            {{/if}}
-
-            <label class="mr-sm-2" for="inlineFormCustomSelect">SEX</label>
-            <select type="text" name="sex" value="{{ animal.sex }}">
-                <option selected>Choose...</option>
-                <option value="MALE" {{#isSelected animal.sex "MALE" }} selected {{/isSelected}}>M</option>
-                <option value="FEMALE" {{#isSelected animal.sex "FEMALE" }} selected {{/isSelected}}>F</option>
-            </select>
-            {{#if errors.sex }}
-            <p>{{ errors.sex}}</p>
-            {{/if}}
 
             <label for="example-text-input" class="col-2 col-form-label">COLOR</label>
             <div class="col-10">
@@ -63,14 +43,12 @@
             <label class="mr-sm-2" for="inlineFormCustomSelect">PEDIGREE</label>
             <select type="text" name="pedigree" value="{{ animal.pedigree }}">
                 <option selected>Choose...</option>
-                <option value="YES" {{#isSelected animal.sex "YES" }} selected {{/isSelected}}>YES</option>
-                <option value="NO" {{#isSelected animal.sex "NO" }} selected {{/isSelected}}>NO</option>
+                <option value="YES" {{#isSelected animal.pedigree "YES" }} selected {{/isSelected}}>YES</option>
+                <option value="NO" {{#isSelected animal.pedigree "NO" }} selected {{/isSelected}}>NO</option>
             </select>
             {{#if errors.pedigree }}
             <p>{{ errors.pedigree}}</p>
             {{/if}}
-
-
 
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">ACHIEVEMENTS</label>
@@ -101,7 +79,8 @@
             <div class="form-group row">
                 <label for="example-number-input" class="col-2 col-form-label">ADDRESS</label>
                 <div class="col-2">
-                    <input class="form-control" type="text" name="address" value="{{ animal.address }}"> {{#if errors.address }}
+                    <input class="form-control" type="text" name="address" value="{{ animal.address }}"> 
+                    {{#if errors.address }}
                     <p>{{ errors.address }}</p>
                     {{/if}}
                 </div>
@@ -128,9 +107,10 @@
             </div>
 
         </div>
+-->
         <button type="submit" class="btn btn-default btn-sm">Editar animal</button>
 
-</div>
+
 
 
 </div>

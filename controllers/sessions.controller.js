@@ -28,14 +28,11 @@ module.exports.doCreate = (req, res, next) => {
           user.checkPassword(password)
             .then((match) => {
               if (match) {
-                console.log('User:', user)
-                console.log('Session: ', req.session)
+                req.session.currentUser = user;
 
-                //req.session.currentUser = user;
-                res.render('logeado', {
-                  user: user
-                });
+                res.redirect('/animals')
               } else {
+                console.log('ENTRO AQUIIII')
                 res.render("sessions/create", {
                   user: new User(req.body),
                   errors: {

@@ -1,25 +1,27 @@
-<h1>LIST ANIMAL</h1>
+
+<h1 style="margin-top: 100px">LIST ANIMAL</h1>
 <a href="/animals/create" class="btn btn-success">New Pet</a>
 
-{{#each animals }}
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{ this.name }}</h5>
-      <p class="card-text">{{ this.type }}</p>
-      <p class="card-text">{{ this.race }}</p>
-      <p class="card-text">{{ this.sex }}</p>
-      <p class="card-text">{{ this.pedigree }}</p>
-      <p class="card-text">{{ this.town }}</p>
-      <p class="card-text">{{ this.postcode }}</p>
-
-      <a href="/animals/{{this._id}}/details">Details</a>
-      <a href="/animals/{{this.id}}/edit" class="text-warning">Edit</a>
-
-      <form action="/animals/{{ this.id }}/delete" method="post">
-        <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
-      </form>
-        <a href="#" class="btn btn-primary">Solicitar cruce</a>
+<div class="container">
+  {{#each animals }}
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ this.name }}</h5>
+        <p class="card-text">{{ this.type }}</p>
+        <p class="card-text">{{ this.race }}</p>
+        <p class="card-text">{{ this.sex }}</p>
+        <p class="card-text">{{ this.pedigree }}</p>
+        <p class="card-text">{{ this.town }}</p>
+        <p class="card-text">{{ this.postcode }}</p>
+        <hr>
+        <a href="/animals/{{this._id}}/details">Details</a>
+        <a href="/animals/{{this.id}}/edit" class="text-warning">Edit</a>
+        <form action="/animals/{{ this.id }}/delete" method="post">
+          <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
+        </form>
+      </div>
     </div>
-  </div>
-{{/each}}
+    <hr>
+  {{/each}}
+</div>

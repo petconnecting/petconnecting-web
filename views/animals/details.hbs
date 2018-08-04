@@ -9,6 +9,8 @@
     <p class="card-text">{{ animal.ownername }}</p>
     <p class="card-text">{{ animal.achievements }}</p>
     <a href="/animals/{{animal._id}}/edit" class="text-warning">Edit</a>
+
+    <h1>{{ animal.pedigree }}</h1>
     
     <form action="/animals/{{ animal._id }}/delete" method="post">
         <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>

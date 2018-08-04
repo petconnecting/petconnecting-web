@@ -8,10 +8,41 @@
   <!-- Cargamos el css de bootstrap CDN aqui -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   {{!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> --}}
-
 </head>
 
 <body>
+
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="left-content">
+              <a class="navbar-brand" href="#">PetConnecting</a>
+                <a href="/animals/create"><button>Create</button></a>
+                <a href="/animals/userlist"><button>Buscador</button></a>
+            </div>
+
+            <div class="right-content">
+              {{#if currentUser}}
+              <a href="/sessions/logout"><button>Logout</button></a>
+              {{else}}
+                <form class="formularioMolon" method="post" action="sessions/create">
+                    <input type="text" name="email" placeholder="Email.." value="nikotomad@gmail.com"/> 
+                    {{#if errors.email}}
+                    <p>{{ errors.email }}</p>
+                    {{/if}}
+                    <input type="password" name="password" placeholder="Password.." value="1" />
+                     {{#if errors.password}}
+                    <p>{{errors.password}}</p>
+                    {{/if}}
+                    <button type="submit">Login</button>
+                    <button type="submit"><a href="/users/signup">Sign up</a></button>
+                </form>
+              {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+
   {{{body}}}
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

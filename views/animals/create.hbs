@@ -11,15 +11,17 @@
    {{!-- {{/if}} --}}
    method="POST">
 
-    <label class="mr-sm-2" for="inlineFormCustomSelect">TYPE</label>
-    <select type="text" name="type" value="{{ animals.type }}">
-      <option selected>Choose...</option>
-      <option value="DOG">Dog</option>
-      <option value="HORSE">Horse</option>
-    </select>
-    {{#if errors.type }}
-    <p>{{ errors.type }}</p>
-    {{/if}}
+    <div class="form-group row">
+      <label class="mr-sm-2" for="inlineFormCustomSelect">TYPE</label>
+      <select type="text" name="type" value="{{ animals.type }}">
+        <option selected>Choose...</option>
+        <option value="DOG">Dog</option>
+        <option value="HORSE">Horse</option>
+      </select>
+      {{#if errors.type }}
+      <p>{{ errors.type }}</p>
+      {{/if}}
+    </div>
 
     <div class="form-group row">
       <label for="example-number-input" class="col-2 col-form-label">Name</label>
@@ -28,8 +30,9 @@
         <p>{{ errors.name }}</p>
         {{/if}}
       </div>
+    </div>
 
-
+    <div class="form-group row">
       <label class="mr-sm-2" for="inlineFormCustomSelect">RACE</label>
       <select type="text" name="race">
         <option>Choose...</option>
@@ -92,14 +95,18 @@
         <option value="vizsla">vizsla</option>
         <option value="weimaraner">weimaraner</option>
        <option value="whippet">whippet</option>
-
       </select>
       {{#if errors.race }}
         <p>{{ errors.race }}</p>
       {{/if}}
+      </div>
+
+    <div class="form-group row">
       <input type="hidden" id="animal-img-input" name="image" value="https://images.dog.ceo/breeds/affenpinscher/n02110627_4457.jpg" />
       <img id="animal-img" src="https://images.dog.ceo/breeds/affenpinscher/n02110627_4457.jpg" alt="" />
+    </div>
 
+    <div class="form-group row">
       <label class="mr-sm-2" for="inlineFormCustomSelect">SEX</label>
       <select type="text" name="sex" value="{{ animals.sex }}">
         <option selected>Choose...</option>
@@ -109,23 +116,27 @@
       {{#if errors.sex }}
       <p>{{ errors.sex}}</p>
       {{/if}}
+    </div>
 
+    <div class="form-group row">
       <label for="example-text-input" class="col-2 col-form-label">COLOR</label>
       <div class="col-10">
         <input class="form-control" type="text" name="color" value="{{ animals.color }}"> {{#if errors.color }}
         <p>{{ errors.color }}</p>
         {{/if}}
       </div>
+    </div>
 
-      <div class="form-group row">
-        <label for="example-number-input" class="col-2 col-form-label">AGE</label>
-        <div class="col-2">
-          <input class="form-control" type="number" name="age" value="{{ animal.age }}"> {{#if errors.age }}
-          <p>{{ errors.age }}</p>
-          {{/if}}
-        </div>
+    <div class="form-group row">
+      <label for="example-number-input" class="col-2 col-form-label">AGE</label>
+      <div class="col-2">
+        <input class="form-control" type="number" min="1" max="20" name="age" value="{{ animal.age }}"> {{#if errors.age }}
+        <p>{{ errors.age }}</p>
+        {{/if}}
       </div>
+    </div>
 
+    <div class="form-group row">
       <label class="mr-sm-2" for="inlineFormCustomSelect">PEDIGREE</label>
       <select type="text" name="pedigree" value="{{ animal.pedigree }}">
         <option selected>Choose...</option>
@@ -135,10 +146,9 @@
       {{#if errors.pedigree }}
       <p>{{ errors.pedigree}}</p>
       {{/if}}
+    </div>
 
-
-
-      <div class="form-group">
+      <div class="form-group row">
         <label for="exampleFormControlTextarea1">ACHIEVEMENTS</label>
         <textarea class="form-control" type="text" name="achievements" value="{{ animal.achievements }}" rows="3"></textarea> {{#if errors.achievements }}
         <p>{{ errors.achievements}}</p>
@@ -152,38 +162,33 @@
           <p>{{ errors.trainer }}</p>
           {{/if}}
         </div>
+      </div>
 
-        <div class="form-group row">
-          <label for="example-number-input" class="col-2 col-form-label">OWNER</label>
-          <div class="col-2">
-            <input class="form-control" type="text" name="ownername" value="{{ animal.ownername }}"> {{#if errors.ownername }}
-            <p>{{ errors.ownername }}</p>
-            {{/if}}
-          </div>
-
+      <div class="form-group row">
+        <label for="example-number-input" class="col-2 col-form-label">OWNER</label>
+        <div class="col-2">
+          <input class="form-control" type="text" name="ownername" value="{{ animal.ownername }}"> {{#if errors.ownername }}
+          <p>{{ errors.ownername }}</p>
+          {{/if}}
         </div>
       </div>
 
-<div class="form-group row">
+      <div class="form-group row">
           <label for="example-number-input" class="col-2 col-form-label">ADDRESS</label>
           <div class="col-2">
             <input class="form-control" type="text" name="address" value="{{ animal.address }}"> {{#if errors.address }}
             <p>{{ errors.address }}</p>
             {{/if}}
           </div>
-
-        </div>
       </div>
 
-<div class="form-group row">
+      <div class="form-group row">
           <label for="example-number-input" class="col-2 col-form-label">TOWN</label>
           <div class="col-2">
             <input class="form-control" type="text" name="town" value="{{ animals.town }}"> {{#if errors.town }}
             <p>{{ errors.town }}</p>
             {{/if}}
           </div>
-
-        </div>
       </div>
 
       <div class="form-group row">
@@ -193,10 +198,14 @@
             <p>{{ errors.postcode }}</p>
             {{/if}}
           </div>
-
         </div>
-      </div>
-      <button type="submit" class="btn btn-default btn-sm">,Registro</button>
+
+        <div class="form-group row">
+          <button type="submit" class="btn btn-success btn-lg">Registro</button>
+        </div>
+
+      </div> <!-- div de cierre -->
+      
         {{!-- <a href="/animals" /> create!</button> --}}
       {{!--
       <input type="submit" value="Instagram" class="btn btn-default btn-sm" /> --}}

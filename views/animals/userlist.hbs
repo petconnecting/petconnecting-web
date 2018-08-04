@@ -1,0 +1,23 @@
+<h1>ANIMALS EXCEPT YOURS</h1>
+<a href="/animals" class="btn btn-success">Ver todos los animales</a>
+
+{{#if user}}
+  <h1>Hola, {{user.name}}</h1>
+{{/if}}
+
+{{#each animals }}
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ this.name }}</h5>
+      <p class="card-text">{{ this.type }}</p>
+      <p class="card-text">{{ this.race }}</p>
+      <p class="card-text">{{ this.sex }}</p>
+      <p class="card-text">{{ this.pedigree }}</p>
+      <p class="card-text">{{ this.town }}</p>
+      <p class="card-text">{{ this.postcode }}</p>
+      </form>
+        <button class="btn btn-lg btn-info">Solicitar cruce</button>
+    </div>
+  </div>
+{{/each}}

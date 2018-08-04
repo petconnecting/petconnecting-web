@@ -25,13 +25,9 @@ app.use(session({
     maxAge: 60 * 60 * 24 * 1000
   }
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use((req, res, next) => {
-  res.locals.session = req.user;
-  next();
-})
 
 const usersRouter = require('./routes/users.routes');
 const indexRouter = require('./routes/index.routes');

@@ -30,12 +30,14 @@ const animalSchema = new mongoose.Schema (
     age: {
       type: Number,
       required: 'Date birth is required',
+      min: [1, 'El animal no puede tener edad negativa'],
+      max: [20, 'Tu animal no debería de ser tan viejo, que fuerte']
     },
 
-    // pedigree: {
-    //   type: String,
-    //   enum: ["YES", "NO"]
-    // },
+    pedigree: {
+      type: String,
+      enum: ["YES", "NO"]
+    },
 
     achievements: {
       type: String,
