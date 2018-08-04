@@ -1,7 +1,9 @@
 const moongoose = require('mongoose');
 
+require('dotenv')
+
 const DB_NAME = 'userpet'
-const MONGODB_URI = `mongodb://127.0.0.1:27017/${DB_NAME}`
+const MONGODB_URI = process.env.MONGO_URI;
 
 moongoose.connect(MONGODB_URI, {useNewUrlParser: true})
 .then(() => {
