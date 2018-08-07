@@ -183,9 +183,18 @@
       </div>
 
       <div class="form-group row">
-          <label for="example-number-input" class="col-2 col-form-label">TOWN</label>
+          <label for="example-number-input" class="col-2 col-form-label">LOCATION</label>
           <div class="col-2">
-            <input class="form-control" type="text" name="town" value="{{ animals.town }}"> {{#if errors.town }}
+            <input class="form-control" type="text" name="location" value="{{ animals.location }}"> {{#if errors.location }}
+            <p>{{ errors.town }}</p>
+            {{/if}}
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="example-number-input" class="col-2 col-form-label">coordinates</label>
+          <div class="col-2">
+            <input class="form-control" type="text" name="coordinates" value="{{ animals.coordinates }}"> {{#if errors.coordinates }}
             <p>{{ errors.town }}</p>
             {{/if}}
           </div>

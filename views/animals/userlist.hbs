@@ -6,10 +6,10 @@
 {{/if}}
 
 {{#each animals }}
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 18rem;" data-lat="">
     <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">{{ this.name }}</h5>
+      <h5 class="card-title">{{ thisl.name }}</h5>
       <p class="card-text">{{ this.type }}</p>
       <p class="card-text">{{ this.race }}</p>
       <p class="card-text">{{ this.sex }}</p>
@@ -20,4 +20,27 @@
         <button class="btn btn-lg btn-info">Solicitar cruce</button>
     </div>
   </div>
+
 {{/each}}
+
+<!-- main.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First Map</title>
+    <style>
+       #map {
+        height: 500px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My First Map</h3>
+    <div id="map"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEkL-jlLHB19M2VVbD52QgO2VkeMERovI">
+    </script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>

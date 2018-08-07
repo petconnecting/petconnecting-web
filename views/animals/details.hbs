@@ -2,18 +2,24 @@
 <a href="/animals/create" class="btn btn-success">New Pet</a>
 
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="https://archive.icann.org/meetings/icann56/cdn.schd.ws/common/img/avatar-empty.png" alt="Card image cap">
+     <img class="card-img-top" src="{{ animal.image }}" alt="Card image cap"
   <div class="card-body">
-    <h5 class="card-title">{{ animal.name }}</h5>
-    <p class="card-text">{{ animal.trainer}}</p>
-    <p class="card-text">{{ animal.ownername }}</p>
-    <p class="card-text">{{ animal.achievements }}</p>
-    <a href="/animals/{{animal._id}}/edit" class="text-warning">Edit</a>
+    <h5 class="card-title">{{ this.name }}</h5>
+    <p class="card-text">{{ this.trainer}}</p>
+    <p class="card-text">{{ this.ownername }}</p>
+    <p class="card-text">{{ this.achievements }}</p>
+    <p class="card-text">{{ this.pedigree }}</p>
 
-    <h1>{{ animal.pedigree }}</h1>
+      <hr>
+    <a href="/animals/{{animal._id}}/edit" class="text-warning">Edit</a>
+     <hr>
     
+    <a href="/animals" class="btn btn-success">back</a>
+
     <form action="/animals/{{ animal._id }}/delete" method="post">
         <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
+
+        <hr>
     </form>
   </div>
 </div>

@@ -225,3 +225,8 @@ form .field.has-error label {
 form .field.has-error input {
 	border: 1px solid  red;
 }
+
+#map {
+  height: 400px;
+  border: 1px dotted;
+ }

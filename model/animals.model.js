@@ -58,10 +58,18 @@ const animalSchema = new mongoose.Schema (
       required: 'Name is required',
     },
 
-    town:{
-      type: String,
-      required: 'Town is required'
-    },
+    location: {
+      type: {
+          type: String, 
+          enum: ['Point'], 
+          required: true,
+          default: 'Point'
+      },
+      coordinates: {
+          type: [Number],
+          required: true
+      }
+  },
 
     postcode:{
       type: Number,

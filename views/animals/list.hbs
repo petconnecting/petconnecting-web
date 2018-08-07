@@ -16,8 +16,8 @@
         <p class="card-text">{{ this.postcode }}</p>
         <hr>
         <a href="/animals/{{this._id}}/details">Details</a>
-        <a href="/animals/{{this.id}}/edit" class="text-warning">Edit</a>
-        <form action="/animals/{{ this.id }}/delete" method="post">
+        <a href="/animals/{{this._id}}/edit" class="text-warning">Edit</a>
+        <form action="/animals/{{ this._id }}/delete" method="post">
           <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
         </form>
       </div>
