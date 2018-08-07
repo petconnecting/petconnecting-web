@@ -2,13 +2,13 @@
 <a href="/animals/create" class="btn btn-success">New Pet</a>
 
 <div class="card" style="width: 18rem;">
-     <img class="card-img-top" src="{{ animal.image }}" alt="Card image cap"
+     <img class="card-img-top" src="{{ animal.image }}" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{ this.name }}</h5>
-    <p class="card-text">{{ this.trainer}}</p>
-    <p class="card-text">{{ this.ownername }}</p>
-    <p class="card-text">{{ this.achievements }}</p>
-    <p class="card-text">{{ this.pedigree }}</p>
+    <h5 class="card-title">{{ animal.name }}</h5>
+    <p class="card-text">{{ animal.trainer}}</p>
+    <p class="card-text">{{ animal.ownername }}</p>
+    <p class="card-text">{{ animal.achievements }}</p>
+    <p class="card-text">{{ animal.pedigree }}</p>
 
       <hr>
     <a href="/animals/{{animal._id}}/edit" class="text-warning">Edit</a>

@@ -42,6 +42,11 @@ module.exports.doCreate = (req, res, next) => {
     
   const animal = new Animal(req.body);
 
+  animal.location = {
+      type: 'Point',
+      coordinates: [req.body.lat, req.body.lng]
+  }
+
   animal.user = req.session.currentUser;
     
   animal.save()
@@ -128,6 +133,12 @@ module.exports.showUserAnimals = (req, res, next) => {
     
     Animal.find({ user: { $ne: ownerID } })
     .then(animals => {
+
+        animals.forEach((animal) => {
+            animal.latitude = animal.location.coordinates[0],
+            animal.longitude = animal.location.coordinates[1]
+        })
+
         res.render('animals/userlist', {
             animals
         })

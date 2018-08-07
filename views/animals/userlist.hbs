@@ -6,15 +6,16 @@
 {{/if}}
 
 {{#each animals }}
-  <div class="card" style="width: 18rem;" data-lat="">
+  <div class="card" style="width: 18rem;" data-lat="{{this.latitude}}" data-lng="{{this.longitude}}">
     <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">{{ thisl.name }}</h5>
+      <h5 class="card-title">{{ this.name }}</h5>
       <p class="card-text">{{ this.type }}</p>
       <p class="card-text">{{ this.race }}</p>
       <p class="card-text">{{ this.sex }}</p>
       <p class="card-text">{{ this.pedigree }}</p>
-      <p class="card-text">{{ this.town }}</p>
+      <p class="card-text">{{ this.long }}</p>
+      <p class="card-text">{{ this.lat }}</p>
       <p class="card-text">{{ this.postcode }}</p>
       </form>
         <button class="btn btn-lg btn-info">Solicitar cruce</button>
@@ -38,9 +39,5 @@
   <body>
     <h3>My First Map</h3>
     <div id="map"></div>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEkL-jlLHB19M2VVbD52QgO2VkeMERovI">
-    </script>
-    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

@@ -59,17 +59,9 @@ const animalSchema = new mongoose.Schema (
     },
 
     location: {
-      type: {
-          type: String, 
-          enum: ['Point'], 
-          required: true,
-          default: 'Point'
-      },
-      coordinates: {
-          type: [Number],
-          required: true
-      }
-  },
+      type: { type: String },
+      coordinates: [Number]
+    },
 
     postcode:{
       type: Number,
@@ -86,5 +78,16 @@ const animalSchema = new mongoose.Schema (
   {timestamps: true}
 );
 
+animalSchema.index({ location: '2dsphere' });
+
+animalSchema.methods.getLatitude = function() {
+  return 1;
+}
+
+animalSchema.methods.getLongitude = function() {
+  return 1;
+}
+
 const Animal = mongoose.model ('Animal', animalSchema);
+
 module.exports = Animal;

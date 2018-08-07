@@ -25,44 +25,36 @@ function startMap() {
       zoom: 15,
       center: MiCasa
     });
-  
-    // Add a marker for Ironhack Barcelona
-    const miMarker = new google.maps.Marker({
-      position: {
-        lat: MiCasa.lat,
-        lng: MiCasa.lng
-      },
-      map: map,
-      title: "Campus"
-    });
-  
-  
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        const user_location = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-  
-        // Center map with user location
-        map.setCenter(user_location);
-  
-        // Add a marker for your user location
-        const miMarker = new google.maps.Marker({
-          position: {
-            lat: user_location.lat,
-            lng: user_location.lng
-          },
-          map: map,
-          title: "HERE"
-        });
-  
-      }, function () {
-        console.log('Error in the geolocation service.');
+
+    var animalMarkers = [];
+
+    // Iterate over div with card class
+      // get latitude and longitude
+      // create new marker with these lat and lng
+      // push new marker to animalMarkers array
+
+    const petDivs = document.getElementsByClassName("card");
+
+    for (let i = 0; i < petDivs.length; i++) {
+      let petDiv = petDivs[i];
+      const lat = Number(petDiv.dataset.lat);
+      const lng = Number(petDiv.dataset.lng);
+
+      let newAnimal = new google.maps.Marker({
+        position: {
+          lat: lat,
+          lng: lng
+        },
+        map: map
       });
-    } else {
-      console.log('Browser does not support geolocation.');
+
+      animalMarkers.push(newAnimal);
+
+      map.setCenter({
+        lat: lat,
+        lng: lng
+      })
     }
   }
   
-  startMap();
+  startMap()

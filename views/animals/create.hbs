@@ -16,7 +16,6 @@
       <select type="text" name="type" value="{{ animals.type }}">
         <option selected>Choose...</option>
         <option value="DOG">Dog</option>
-        <option value="HORSE">Horse</option>
       </select>
       {{#if errors.type }}
       <p>{{ errors.type }}</p>
@@ -183,19 +182,19 @@
       </div>
 
       <div class="form-group row">
-          <label for="example-number-input" class="col-2 col-form-label">LOCATION</label>
+          <label for="example-number-input" class="col-2 col-form-label">LNG</label>
           <div class="col-2">
-            <input class="form-control" type="text" name="location" value="{{ animals.location }}"> {{#if errors.location }}
-            <p>{{ errors.town }}</p>
+            <input class="form-control" type="number" id="lng" name="lng"> {{#if errors.long }}
+            <p>{{ errors.long }}</p>
             {{/if}}
           </div>
       </div>
 
       <div class="form-group row">
-          <label for="example-number-input" class="col-2 col-form-label">coordinates</label>
+          <label for="example-number-input" class="col-2 col-form-label">LAT</label>
           <div class="col-2">
-            <input class="form-control" type="text" name="coordinates" value="{{ animals.coordinates }}"> {{#if errors.coordinates }}
-            <p>{{ errors.town }}</p>
+            <input class="form-control" type="number" id="lat" name="lat"> {{#if errors.lat }}
+            <p>{{ errors.lat }}</p>
             {{/if}}
           </div>
       </div>
