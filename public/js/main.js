@@ -48,13 +48,18 @@ function startMap() {
         map: map
       });
 
+      map.setCenter(newAnimal.getPosition())
+
       animalMarkers.push(newAnimal);
 
-      map.setCenter({
-        lat: lat,
-        lng: lng
-      })
+      var infowindow = new google.maps.InfoWindow({
+        content: "<img src='" + petDiv.children[0].src + "'/>"
+      });
+
+      newAnimal.addListener("click", function() {
+        infowindow.open(map, newAnimal);
+      });
     }
-  }
+}
   
   startMap()

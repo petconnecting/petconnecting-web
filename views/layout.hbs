@@ -28,11 +28,11 @@
               <a href="/sessions/logout"><button>Logout</button></a>
               {{else}}
                 <form class="formularioMolon" method="post" action="sessions/create">
-                    <input type="text" name="email" placeholder="Email.." value="nikotomad@gmail.com"/> 
+                    <input type="text" name="email" placeholder="Email.." value=""/> 
                     {{#if errors.email}}
                     <p>{{ errors.email }}</p>
                     {{/if}}
-                    <input type="password" name="password" placeholder="Password.." value="1" />
+                    <input type="password" name="password" placeholder="Password.." value="" />
                      {{#if errors.password}}
                     <p>{{errors.password}}</p>
                     {{/if}}
