@@ -9,20 +9,29 @@
   <div class="card" style="width: 18rem;" data-lat="{{this.latitude}}" data-lng="{{this.longitude}}">
     <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">{{ this.name }}</h5>
-      <p class="card-text">{{ this.type }}</p>
-      <p class="card-text">{{ this.race }}</p>
-      <p class="card-text">{{ this.sex }}</p>
-      <p class="card-text">{{ this.pedigree }}</p>
+      <h5 class="card-title">Name: {{ this.name }}</h5>
+      <p class="card-text">Race: {{ this.race }}</p>
+      <p class="card-text">Sex: {{ this.sex }}</p>
+      <p class="card-text">Pedigree: {{ this.pedigree }}</p>
       <p class="card-text">{{ this.long }}</p>
       <p class="card-text">{{ this.lat }}</p>
-      <p class="card-text">{{ this.postcode }}</p>
+      <p class="card-text">Postcode {{ this.postcode }}</p>
       </form>
+
+      <form method="POST" action="/animals/userlist/{{ this._id }}/solicitar">
+        <input type="hidden" name="id" value="{{this._id}}">
         <button class="btn btn-lg btn-info">Solicitar cruce</button>
+      </form>
     </div>
   </div>
-
 {{/each}}
+
+      {{#if sentMail}}
+      {{!-- <div class="card">
+        <p>Se ha mandado el mail correctamente! :)</p>
+      </div> --}}
+      <script>alert('Se ha mandado bien el mail')</script>
+      {{/if}}
 
 <!-- main.html -->
 <!DOCTYPE html>

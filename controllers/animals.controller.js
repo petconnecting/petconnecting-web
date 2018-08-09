@@ -1,6 +1,7 @@
 const createError = require("http-errors");
 const mongoose = require("mongoose");
 const Animal = require("../model/animals.model");
+const mailer = require("../services/mailer.service");
 
 module.exports.details = (req, res, next) => {
     const id = req.params.id;
@@ -113,19 +114,42 @@ module.exports.doEdit = (req, res, next) => {
 
 
 module.exports.doDelete = (req, res, next) => {
-    let id = req.params.id;
-    req.idasuprimir = id;
-    req.paquito = 'Paco'
+    const id = req.params.id;
 
-    Animal.findByIdAndRemove(id)
-    .then(()=> {
-        console.log(req)
-        res.redirect('/animals');
+    Animal.findById(id)
+        .then((animal) => {
+            if (animal.user === req.user._id) {
+                Animal.findByIdAndRemove(id)
+                    .then(()=> {
+                        console.log(req)
+                        res.redirect('/animals');
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    })      
+            } else {
+                next(error);
+            }
+        })
+};
+
+module.exports.solicitarCruce = (req, res, next) => {    
+    let id = req.body.id;
+
+    Animal.findById(id)
+    .populate('user')
+    .then(animal => {
+        if (animal) {
+          console.log('El email de su owner es: ', animal.user.email)
+            mailer.solicitudCruce(animal)
+            res.redirect("/animals/userlist?mail=true");
+        }
     })
     .catch(error => {
         console.error(error);
+        next(error);
     })
-};
+}
 
 module.exports.showUserAnimals = (req, res, next) => {
     console.log(req.session.currentUser._id)
@@ -140,7 +164,8 @@ module.exports.showUserAnimals = (req, res, next) => {
         })
 
         res.render('animals/userlist', {
-            animals
+            animals,
+            sentMail: req.query.mail
         })
     })
     .catch(error => {

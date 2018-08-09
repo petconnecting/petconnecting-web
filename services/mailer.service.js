@@ -6,25 +6,25 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_SENDER,
     pass: process.env.EMAIL_PASSWORD
   }
+
 });
 
 const defaultFrom = process.env.EMAIL_SENDER
 
-module.exports.confirmSignUp = (user) => {
+module.exports.solicitudCruce = (animal) => {
   transporter.sendMail({
     from: defaultFrom,
-    to: user.email,
-    subject: 'Activate your account, human!',
+    to: animal.user.email,
+    subject: 'Solicitud de cruce por tu ' + animal.name,
     html: `
       <!DOCTYPE html>
         <html>
         <head>
         </head>
         <body>
-          Hello ${user.name}!
-          As you may or may not know, robots are taking over the world.
-          To make sure you're not one of them, please..
-          Activate your account by <a href="${process.env.APP_URL}/users/confirm?token=${user.token}">clicking here</a>
+          Hola ${animal.owner}! <br>
+          Te han solicitado un cruce por tu ${animal.name} <br>
+          Revisa el perfil 
         </body>
         </html>
     `

@@ -14,9 +14,11 @@ router.get('/:id/edit', animalsController.edit);
 router.post('/:id/edit', animalsController.doEdit);
 
 router.get('/:id/delete', animalsController.warnUser);
+
+router.post('/userlist/:id/solicitar', animalsController.solicitarCruce);
+
 router.post(
-    '/:id/delete', 
-    animalMiddleware.canDeleteAnimal,
+    '/:id/delete',
     animalsController.doDelete
 );
 

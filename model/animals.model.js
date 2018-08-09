@@ -2,10 +2,6 @@ const mongoose = require ('mongoose');
 
 const animalSchema = new mongoose.Schema (
   {
-    type: {
-      type: String,
-      required: 'type is required',
-    },
 
     name: {
       type: String,

@@ -11,19 +11,9 @@
    {{!-- {{/if}} --}}
    method="POST">
 
-    <div class="form-group row">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">TYPE</label>
-      <select type="text" name="type" value="{{ animals.type }}">
-        <option selected>Choose...</option>
-        <option value="DOG">Dog</option>
-      </select>
-      {{#if errors.type }}
-      <p>{{ errors.type }}</p>
-      {{/if}}
-    </div>
 
     <div class="form-group row">
-      <label for="example-number-input" class="col-2 col-form-label">Name</label>
+      <label for="example-number-input" class="col-2 col-form-label">Dog name</label>
       <div class="col-2">
         <input class="form-control" type="text" name="name" value="{{ animals.name }}"> {{#if errors.name }}
         <p>{{ errors.name }}</p>
@@ -184,7 +174,7 @@
       <div class="form-group row">
           <label for="example-number-input" class="col-2 col-form-label">LNG</label>
           <div class="col-2">
-            <input class="form-control" type="number" id="lng" name="lng"> {{#if errors.long }}
+            <input class="form-control" type="string" id="lng" name="lng"> {{#if errors.long }}
             <p>{{ errors.long }}</p>
             {{/if}}
           </div>
@@ -193,7 +183,7 @@
       <div class="form-group row">
           <label for="example-number-input" class="col-2 col-form-label">LAT</label>
           <div class="col-2">
-            <input class="form-control" type="number" id="lat" name="lat"> {{#if errors.lat }}
+            <input class="form-control" type="string" id="lat" name="lat"> {{#if errors.lat }}
             <p>{{ errors.lat }}</p>
             {{/if}}
           </div>
