@@ -2,49 +2,51 @@
 <a href="/animals" class="btn btn-success">Ver todos los animales</a>
 
 {{#if user}}
-  <h1>Hola, {{user.name}}</h1>
-{{/if}}
+<h1>Hola, {{user.name}}</h1>
+{{/if}} {{#each animals }}
+<div class="card" style="width: 18rem;" data-lat="{{this.latitude}}" data-lng="{{this.longitude}}">
+  <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Name: {{ this.name }}</h5>
+    <p class="card-text">Race: {{ this.race }}</p>
+    <p class="card-text">Sex: {{ this.sex }}</p>
+    <p class="card-text">Pedigree: {{ this.pedigree }}</p>
+    <p class="card-text">Postcode {{ this.postcode }}</p>
+    </form>
 
-{{#each animals }}
-  <div class="card" style="width: 18rem;" data-lat="{{this.latitude}}" data-lng="{{this.longitude}}">
-    <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Name: {{ this.name }}</h5>
-      <p class="card-text">Race: {{ this.race }}</p>
-      <p class="card-text">Sex: {{ this.sex }}</p>
-      <p class="card-text">Pedigree: {{ this.pedigree }}</p>
-      <p class="card-text">Postcode {{ this.postcode }}</p>
-      </form>
-
-      <form method="POST" action="/animals/userlist/{{ this._id }}/solicitar">
-        <input type="hidden" name="id" value="{{this._id}}">
-        <button class="btn btn-lg btn-info">Solicitar cruce</button>
-      </form>
-    </div>
+    <form method="POST" action="/animals/userlist/{{ this._id }}/solicitar">
+      <input type="hidden" name="id" value="{{this._id}}">
+      <button class="btn btn-lg btn-info">Solicitar cruce</button>
+    </form>
   </div>
-{{/each}}
-
-      {{#if sentMail}}
-      {{!-- <div class="card">
-        <p>Se ha mandado el mail correctamente! :)</p>
-      </div> --}}
-      <script>alert('Se ha mandado bien el mail')</script>
-      {{/if}}
+</div>
+{{/each}} {{#if sentMail}} {{!--
+<div class="card">
+  <p>Se ha mandado el mail correctamente! :)</p>
+</div> --}}
+<script>alert('Se ha mandado bien el mail')</script> {{/if}}
 
 <!-- main.html -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My First Map</title>
-    <style>
-       #map {
-        height: 500px;
-        width: 100%;
-       }
-    </style>
-  </head>
-  <body>
-    <h3>My First Map</h3>
-    <div id="map"></div>
-  </body>
+
+<head>
+  <title>My First Map</title>
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>My First Map</h3>
+  <div id="map"></div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEkL-jlLHB19M2VVbD52QgO2VkeMERovI">
+  </script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+
 </html>

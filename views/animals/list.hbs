@@ -1,27 +1,28 @@
-
-<h1 style="margin-top: 100px">LIST ANIMAL</h1>
+<h1 style="margin-top: 60px">
+  Your list</h1>
 <a href="/animals/create" class="btn btn-success">New Pet</a>
 
 <div class="container">
-  {{#each animals }}
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{{ this.image }}" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Name: {{ this.name }}</h5>
-        <p class="card-text">Race:{{ this.race }}</p>
-        <p class="card-text">Sex: {{ this.sex }}</p>
-        <p class="card-text">Pedigree:{{ this.pedigree }}</p>
-        <p class="card-text">{{ this.long }}</p>
-        <p class="card-text">{{ this.lat }}</p>
-        <p class="card-text">Postcode:{{ this.postcode }}</p>
-        <hr>
-        <a href="/animals/{{this._id}}/details">Details</a>
-        <a href="/animals/{{this._id}}/edit" class="text-warning">Edit</a>
-        <form action="/animals/{{ this._id }}/delete" method="post">
-          <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
-        </form>
-      </div>
+  <div class="row">
+    {{#each animals }}
+
+    <div class="card medium col s6" style="width:260px">
+      <img class="card-img-top" style="width:260px" src="{{ this.image }}" alt="Card image cap">
+      <h5 class="card-title">{{ this.name }}</h5>
+      <p class="card-text">Race:{{ this.race }}</p>
+      <p class="card-text">Sex: {{ this.sex }}</p>
+      <p class="card-text">Pedigree:{{ this.pedigree }}</p>
+      <p class="card-text">{{ this.long }}</p>
+      <p class="card-text">{{ this.lat }}</p>
+      <p class="card-text">Postcode:{{ this.postcode }}</p>
+      <hr>
+      <a href="/animals/{{this._id}}/details">Details</a>
+      <a href="/animals/{{this._id}}/edit" class="text-warning">Edit</a>
+
+      <form action="/animals/{{ this._id }}/delete" method="post">
+        <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
+      </form>
     </div>
-    <hr>
-  {{/each}}
+    {{/each}}
+  </div>
 </div>

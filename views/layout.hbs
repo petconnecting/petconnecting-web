@@ -29,6 +29,7 @@
       width: unset;
     }
   </style>
+
   <nav>
     <div class="nav-wrapper pink darken-4">
       <a class="brand-logo">
@@ -38,6 +39,7 @@
 
       <div class="right-content">
         {{#if currentUser}}
+        <a href="/animals/userlist" class="waves-effect waves-light btn">Search</a>
         <a href="/sessions/logout">
           <button style="margin:0px 20px" class="btn waves-effect waves-light" type="submit">
             Log out
@@ -68,28 +70,7 @@
 
     </div>
   </nav>
-
-  {{!--
-  <div class="right-content">
-    {{#if currentUser}}
-    <a href="/sessions/logout">
-      <button>Logout</button>
-    </a>
-    {{else}}
-    <form class="formularioMolon" method="post" action="sessions/create">
-      <input type="text" name="email" placeholder="Email.." value="" /> {{#if errors.email}}
-      <p>{{ errors.email }}</p>
-      {{/if}}
-      <input type="password" name="password" placeholder="Password.." value="" /> {{#if errors.password}}
-      <p>{{errors.password}}</p>
-      {{/if}}
-      <button type="submit">Login</button>
-      <button type="submit">
-        <a href="/users/signup">Sign up</a>
-      </button>
-    </form>
-    {{/if}}
-  </div> --}} {{{body}}}
+  {{{body}}}
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
