@@ -4,57 +4,55 @@ const Animal = require("../model/animals.model");
 const mailer = require("../services/mailer.service");
 
 module.exports.details = (req, res, next) => {
-    const id = req.params.id;
+  const id = req.params.id;
 
-    Animal.findById(id)
-        .then(animal => {
-            res.render('animals/details', {
-                animal
-            });
-        })
-        .catch((error)=>{
-            next(error)
-        });
-}
+  Animal.findById(id)
+    .then(animal => {
+      res.render("animals/details", {
+        animal
+      });
+    })
+    .catch(error => {
+      next(error);
+    });
+};
 
 module.exports.list = (req, res, next) => {
   Animal.find({ user: req.session.currentUser._id })
     .then(animals => {
-      res.render('animals/list', {
+      res.render("animals/list", {
         animals
       });
     })
     .catch(error => {
       next(error);
     });
-}
-
-
+};
 
 module.exports.create = (req, res, next) => {
-    console.log('CREATE');
-    
+  console.log("CREATE");
+
   res.render("animals/create");
 };
 
 module.exports.doCreate = (req, res, next) => {
-    console.log('DO CREATE');
-    
-    
+  console.log("DO CREATE");
+
   const animal = new Animal(req.body);
 
   animal.location = {
-      type: 'Point',
-      coordinates: [req.body.lat, req.body.lng]
-  }
+    type: "Point",
+    coordinates: [req.body.lat, req.body.lng]
+  };
 
   animal.user = req.session.currentUser;
-    
-  animal.save()
-    .then(animal =>{
-        console.log(animal);
-        
-        res.redirect('/animals');
+
+  animal
+    .save()
+    .then(animal => {
+      console.log(animal);
+
+      res.redirect("/animals");
     })
     .catch(error => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -70,110 +68,99 @@ module.exports.doCreate = (req, res, next) => {
 };
 
 module.exports.edit = (req, res, next) => {
-  const id = req.params.id; 
+  const id = req.params.id;
   Animal.findById(id)
-      .then(animal => {
-          //console.log(animal)
-          res.render('animals/edit',{
-              animal
-          });
-      })
-      .catch((error)=>{
-          next(error)
+    .then(animal => {
+      //console.log(animal)
+      res.render("animals/edit", {
+        animal
       });
+    })
+    .catch(error => {
+      next(error);
+    });
 };
 
-module.exports.doEdit = (req, res, next) => {    
+module.exports.doEdit = (req, res, next) => {
   const id = req.params.id;
 
   Animal.findById(id)
-      .then(animal => {
-          if (animal) {
-            Object.assign(animal, req.body);
-              animal.save()
-                  .then(() => {
-                      res.redirect(`/animals/${id}/details`);
-                  })
-                  .catch(error => {
-                      if(error instanceof mongoose.Error.ValidationError) {
-                          res.render('animals/edit', {
-                              animal: animal, 
-                              error: error.errors
-                          });
-                      } else {
-                          next(error);
-                      }
-                  })
-          } else {
-              console.error('No hay animal :(')
+    .then(animal => {
+      if (animal) {
+        Object.assign(animal, req.body);
+        animal
+          .save()
+          .then(() => {
+            res.redirect(`/animals/${id}/details`);
+          })
+          .catch(error => {
+            if (error instanceof mongoose.Error.ValidationError) {
+              res.render("animals/edit", {
+                animal: animal,
+                error: error.errors
+              });
+            } else {
               next(error);
-          }
-      })
-      .catch(error => next(error));
+            }
+          });
+      } else {
+        console.error("No hay animal :(");
+        next(error);
+      }
+    })
+    .catch(error => next(error));
 };
-
 
 module.exports.doDelete = (req, res, next) => {
-    const id = req.params.id;
+  const id = req.params.id;
 
-    Animal.findById(id)
-        .then((animal) => {
-            if (animal.user === req.user._id) {
-                Animal.findByIdAndRemove(id)
-                    .then(()=> {
-                        console.log(req)
-                        res.redirect('/animals');
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    })      
-            } else {
-                next(error);
-            }
-        })
+  Animal.findByIdAndDelete(id)
+    .then(() => {
+      res.redirect("/animals");
+    })
+    .catch(error => next(error));
 };
 
-module.exports.solicitarCruce = (req, res, next) => {    
-    let id = req.body.id;
+module.exports.solicitarCruce = (req, res, next) => {
+  let id = req.body.id;
 
-    Animal.findById(id)
-    .populate('user')
+  Animal.findById(id)
+    .populate("user")
     .then(animal => {
-        if (animal) {
-          console.log('El email de su owner es: ', animal.user.email)
-            mailer.solicitudCruce(animal)
-            res.redirect("/animals/userlist?mail=true");
-        }
+      if (animal) {
+        console.log("El email de su owner es: ", animal.user.email);
+        mailer.solicitudCruce(animal);
+        res.redirect("/animals/userlist?mail=true");
+      }
     })
     .catch(error => {
-        console.error(error);
-        next(error);
-    })
-}
+      console.error(error);
+      next(error);
+    });
+};
 
 module.exports.showUserAnimals = (req, res, next) => {
-    console.log(req.session.currentUser._id)
-    let ownerID = req.session.currentUser._id;
-    
-    Animal.find({ user: { $ne: ownerID } })
+  console.log(req.session.currentUser._id);
+  let ownerID = req.session.currentUser._id;
+
+  Animal.find({ user: { $ne: ownerID } })
     .then(animals => {
+      animals.forEach(animal => {
+        (animal.latitude = animal.location.coordinates[0]),
+          (animal.longitude = animal.location.coordinates[1]);
+      });
 
-        animals.forEach((animal) => {
-            animal.latitude = animal.location.coordinates[0],
-            animal.longitude = animal.location.coordinates[1]
-        })
-
-        res.render('animals/userlist', {
-            animals,
-            sentMail: req.query.mail
-        })
+      res.render("animals/userlist", {
+        animals,
+        sentMail: req.query.mail
+      });
     })
     .catch(error => {
-        console.error(error)
-        next(error)
-    })
-}
+      console.error(error);
+      next(error);
+    });
+};
 
 module.exports.warnUser = (req, res, next) => {
-    res.send('Tu eres muy listo')
-}
+  res.send("Tu eres muy listo");
+};
