@@ -55,55 +55,6 @@
     </div>
 </div> --}}
 
-  <style>
-    .right-content {
-      float: right;
-    }
-
-    .formularioMolon {
-      display: inline-block;
-      width: unset;
-    }
-  </style>
-  <nav>
-    <div class="nav-wrapper pink darken-4">
-      <a class="brand-logo">
-        <i class="material-icons">
-          pets
-        </i> PetConnecting</a>
-
-      <div class="right-content">
-        {{#if currentUser}}
-        <a href="/sessions/logout">
-          <button style="margin:0px 20px" class="btn waves-effect waves-light" type="submit">
-            Log out
-          </button>
-        </a>
-        {{else}}
-        <form class="formularioMolon" method="POST" action="sessions/create">
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li style="margin:0px 20px">
-              <input placeholder="Email" name="email" type="text" class="validate">{{#if errors.email}}
-              <p>{{ errors.email }}</p>
-              {{/if}}
-            </li>
-            <li style="margin:0px 20px">
-              <input placeholder="Password" name="password" type="password" class="validate">{{#if errors.password}}
-              <p>{{ errors.password }}</p>
-              {{/if}}
-            </li>
-            <li style="margin:0px 20px">
-              <button class="btn waves-effect waves-light" type="submit">
-                Log in
-              </button>
-            </li>
-          </ul>
-        </form>
-        {{/if}}
-      </div>
-
-    </div>
-  </nav>
 
 <section>
     <div class="slider">
