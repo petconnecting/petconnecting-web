@@ -16,6 +16,7 @@ const animalSchema = new mongoose.Schema (
     sex: {
       type: String,
       enum: ['MALE', 'FEMALE'],
+      required: 'Sex is required',
     },
 
     color: {
@@ -25,14 +26,15 @@ const animalSchema = new mongoose.Schema (
 
     age: {
       type: Number,
-      required: 'Date birth is required',
-      min: [1, 'El animal no puede tener edad negativa'],
-      max: [20, 'Tu animal no debería de ser tan viejo, que fuerte']
+      required: 'Age is required',
+      min: [1, 'Dog age can not be negative'],
+      max: [20, 'Sorry, but your dog is too old']
     },
 
     pedigree: {
       type: String,
-      enum: ["YES", "NO"]
+      enum: ["YES", "NO"],
+      required: 'Pedigree is required',
     },
 
     achievements: {
@@ -41,17 +43,16 @@ const animalSchema = new mongoose.Schema (
 
     trainer: {
       type: String,
-      required: 'Name is required',
     },
 
     ownername: {
       type: String,
-      required: 'Name is required',
+      required: 'Owner is required',
     },
 
     address: {
       type: String,
-      required: 'Name is required',
+      required: 'Address is required',
     },
 
     location: {

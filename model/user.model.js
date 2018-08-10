@@ -25,8 +25,8 @@ const userSchema = new mongoose.Schema({
 
   age: {
     type: Number,
-    required: true,
-    min: [18, 'No eres mayor de edad']
+    required: "Age +18 is required",
+    min: [18, "No eres mayor de edad"]
   },
 
   social: {

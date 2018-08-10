@@ -1,213 +1,190 @@
-<h1>CREATE ANIMAL</h1>
+<style>
+  p {
+    color: red
+  }
+</style>
 
-<div class="container">
-  <p class="form-title"> </p>
-
-  <form action=
-  {{!-- {{#if this.isNew}} --}}
-  "/animals/create"
-   {{!-- {{else}} --}}
-   {{!-- "/animals/{{this._id}}/edit" --}}
-   {{!-- {{/if}} --}}
-   method="POST">
-
-
-    <div class="form-group row">
-      <label for="example-number-input" class="col-2 col-form-label">Dog name</label>
-      <div class="col-2">
-        <input class="form-control" type="text" name="name" value="{{ animals.name }}"> {{#if errors.name }}
-        <p>{{ errors.name }}</p>
-        {{/if}}
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">RACE</label>
-      <select type="text" name="race">
-        <option>Choose...</option>
-        <option value="affenpinscher">Affenpinscher</option>
-        <option value="african">African</option>
-        <option value="airedale">airedale</option>
-        <option value="akita">akita</option>
-        <option value="appenzeller">appenzeller</option>
-        <option value="basenji">basenji</option>
-        <option value="beagle">beagle</option>
-        <option value="bluetick">bluetick</option>
-        <option value="borzoi">borzoi</option>
-        <option value="bouvier">bouvier</option>
-        <option value="boxer">boxer</option>
-        <option value="brabancon">African</option>
-        <option value="briard">briard</option>
-        <option value="cairn">cairn</option>
-        <option value="chihuahua">chihuahua</option>
-        <option value="chow">chow</option>
-        <option value="clumber">clumber</option>
-        <option value="coonhound">coonhound</option>
-        <option value="cotondetulear">cotondetulear</option>
-        <option value="dachshund">dachshynd</option>
-        <option value="dalmatian">dalmatian</option>
-        <option value="dhole">dhole</option>
-        <option value="dingo">dingo</option>
-        <option value="entlebucher">entlebucher</option>
-        <option value="eskimo">eskimo</option>
-        <option value="germanshepherd">germanshepherd</option>
-        <option value="groenendael">groenendael</option>
-        <option value="husky">husky</option>
-        <option value="keeshond">keeshond</option>
-        <option value="kelpie">kelpie</option>
-        <option value="komondor">komodor</option>
-        <option value="kuvasz">kuvasz</option>
-        <option value="labrador">labrador</option>
-        <option value="leonberg">leonberg</option>
-        <option value="lhasa">lhasas</option>
-        <option value="malamute">malamute</option>
-        <option value="malinois">malinois</option>
-        <option value="maltese">maltese</option>
-        <option value="mexicanhairless">mexicanhairless</option>
-        <option value="newfoundland">newfoundland</option>
-        <option value="otterhound">otterhound</option>
-        <option value="papillon">papillon</option>
-        <option value="pekinese">pekinese</option>
-        <option value="pembroke">pembroke</option>
-        <option value="pomeranian">pomeranian</option>
-        <option value="pug">pug</option>
-        <option value="puggle">puggle </option>       
-        <option value="pyrenees">pyrenees</option>
-        <option value="redbone">redbone</option>
-        <option value="rottweiler">rottweiler</option>  
-        <option value="saluki">saluki</option>
-        <option value="samoyed">samoyed</option> 
-        <option value="schipperke">schipperke</option>
-        <option value="shiba">shiba</option> 
-        <option value="shihtzu">shihtzu<git/option>
-        <option value="stbernard">stbernard</option>
-        <option value="vizsla">vizsla</option>
-        <option value="weimaraner">weimaraner</option>
-       <option value="whippet">whippet</option>
-      </select>
-      {{#if errors.race }}
-        <p>{{ errors.race }}</p>
-      {{/if}}
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+    <div class="card">
+      <div class="card-action pink darken-4 white-text">
+        <h3>Dog form</h3>
       </div>
 
-    <div class="form-group row">
-      <input type="hidden" id="animal-img-input" name="image" value="https://images.dog.ceo/breeds/affenpinscher/n02110627_4457.jpg" />
-      <img id="animal-img" src="https://images.dog.ceo/breeds/affenpinscher/n02110627_4457.jpg" alt="" />
-    </div>
+      <form action="/animals/create" method="POST">
+        <div class="card-content">
+          <div class="form-field">
 
-    <div class="form-group row">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">SEX</label>
-      <select type="text" name="sex" value="{{ animals.sex }}">
-        <option selected>Choose...</option>
-        <option value="MALE">M</option>
-        <option value="FEMALE">F</option>
-      </select>
-      {{#if errors.sex }}
-      <p>{{ errors.sex}}</p>
-      {{/if}}
-    </div>
+            <div class="input-field">
+              <label>
+                <i class="material-icons left">pets</i>Name</label>
+              <input name="name" type="text" value="{{animal.name}}" class="validate"> {{#if errors.name }}
+              <p>{{ errors.name }}</p>
+              {{/if}}
+            </div>
 
-    <div class="form-group row">
-      <label for="example-text-input" class="col-2 col-form-label">COLOR</label>
-      <div class="col-10">
-        <input class="form-control" type="text" name="color" value="{{ animals.color }}"> {{#if errors.color }}
-        <p>{{ errors.color }}</p>
-        {{/if}}
-      </div>
-    </div>
+            <div class="input-field">
+              <select type="text" name="race">
+                <option value="">Choose race</option>
+                <option value="affenpinscher">Affenpinscher</option>
+                <option value="african">African</option>
+                <option value="airedale">airedale</option>
+                <option value="akita">akita</option>
+                <option value="appenzeller">appenzeller</option>
+                <option value="basenji">basenji</option>
+                <option value="beagle">beagle</option>
+                <option value="bluetick">bluetick</option>
+                <option value="borzoi">borzoi</option>
+                <option value="bouvier">bouvier</option>
+                <option value="boxer">boxer</option>
+                <option value="brabancon">African</option>
+                <option value="briard">briard</option>
+                <option value="cairn">cairn</option>
+                <option value="chihuahua">chihuahua</option>
+                <option value="chow">chow</option>
+                <option value="clumber">clumber</option>
+                <option value="coonhound">coonhound</option>
+                <option value="cotondetulear">cotondetulear</option>
+                <option value="dachshund">dachshynd</option>
+                <option value="dalmatian">dalmatian</option>
+                <option value="dhole">dhole</option>
+                <option value="dingo">dingo</option>
+                <option value="entlebucher">entlebucher</option>
+                <option value="eskimo">eskimo</option>
+                <option value="germanshepherd">germanshepherd</option>
+                <option value="groenendael">groenendael</option>
+                <option value="husky">husky</option>
+                <option value="keeshond">keeshond</option>
+                <option value="kelpie">kelpie</option>
+                <option value="komondor">komodor</option>
+                <option value="kuvasz">kuvasz</option>
+                <option value="labrador">labrador</option>
+                <option value="leonberg">leonberg</option>
+                <option value="lhasa">lhasas</option>
+                <option value="malamute">malamute</option>
+                <option value="malinois">malinois</option>
+                <option value="maltese">maltese</option>
+                <option value="mexicanhairless">mexicanhairless</option>
+                <option value="newfoundland">newfoundland</option>
+                <option value="otterhound">otterhound</option>
+                <option value="papillon">papillon</option>
+                <option value="pekinese">pekinese</option>
+                <option value="pembroke">pembroke</option>
+                <option value="pomeranian">pomeranian</option>
+                <option value="pug">pug</option>
+                <option value="puggle">puggle </option>
+                <option value="pyrenees">pyrenees</option>
+                <option value="redbone">redbone</option>
+                <option value="rottweiler">rottweiler</option>
+                <option value="saluki">saluki</option>
+                <option value="samoyed">samoyed</option>
+                <option value="schipperke">schipperke</option>
+                <option value="shiba">shiba</option>
+                <option value="shihtzu">shihtzu</option>
+                <option value="stbernard">stbernard</option>
+                <option value="vizsla">vizsla</option>
+                <option value="weimaraner">weimaraner</option>
+                <option value="whippet">whippet</option>
+              </select>
+              {{#if errors.race }}
+              <p>{{ errors.race }}</p>
+              {{/if}}
+            </div>
 
-    <div class="form-group row">
-      <label for="example-number-input" class="col-2 col-form-label">AGE</label>
-      <div class="col-2">
-        <input class="form-control" type="number" min="1" max="20" name="age" value="{{ animal.age }}"> {{#if errors.age }}
-        <p>{{ errors.age }}</p>
-        {{/if}}
-      </div>
-    </div>
+            <div class="input-field">
+              <input type="hidden" id="animal-img-input" name="image" value="https://images.dog.ceo/breeds/affenpinscher/n02110627_4457.jpg"
+              />
+              <img style="width:250px;" id="animal-img" src="https://images.dog.ceo/breeds/affenpinscher/n02110627_4457.jpg" alt="" />
+            </div>
 
-    <div class="form-group row">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">PEDIGREE</label>
-      <select type="text" name="pedigree" value="{{ animal.pedigree }}">
-        <option selected>Choose...</option>
-        <option value="YES">Yes</option>
-        <option value="NO">No</option>
-      </select>
-      {{#if errors.pedigree }}
-      <p>{{ errors.pedigree}}</p>
-      {{/if}}
-    </div>
+            <div class="input-field">
+              <select name="sex" type="text" value="{{animal.sex}}">
+                <option value="">Sex</option>
+                <option value="MALE">M</option>
+                <option value="FAMALE">F</option>
+              </select>
+              {{#if errors.sex }}
+              <p>{{ errors.sex}}</p>
+              {{/if}}
+            </div>
 
-      <div class="form-group row">
-        <label for="exampleFormControlTextarea1">ACHIEVEMENTS</label>
-        <textarea class="form-control" type="text" name="achievements" value="{{ animal.achievements }}" rows="3"></textarea> {{#if errors.achievements }}
-        <p>{{ errors.achievements}}</p>
-        {{/if}}
-      </div>
+            <div class="input-field">
+              <label>Color</label>
+              <input name="color" type="text" value="{{animal.color}}" class="validate"> {{#if errors.color }}
+              <p>{{ errors.color }}</p>
+              {{/if}}
+            </div>
 
-      <div class="form-group row">
-        <label for="example-number-input" class="col-2 col-form-label">TRAINER</label>
-        <div class="col-2">
-          <input class="form-control" type="text" name="trainer" value="{{ animal.trainer }}"> {{#if errors.trainer }}
-          <p>{{ errors.trainer }}</p>
-          {{/if}}
-        </div>
-      </div>
+            <div class="input-field">
+              <label>Age</label>
+              <input name="age" type="number" value="{{animal.age}}" class="validate" min="1" max="20"> {{#if errors.age }}
+              <p>{{ errors.age }}</p>
+              {{/if}}
+            </div>
 
-      <div class="form-group row">
-        <label for="example-number-input" class="col-2 col-form-label">OWNER</label>
-        <div class="col-2">
-          <input class="form-control" type="text" name="ownername" value="{{ animal.ownername }}"> {{#if errors.ownername }}
-          <p>{{ errors.ownername }}</p>
-          {{/if}}
-        </div>
-      </div>
+            <div class="input-field">
+              <select name="pedigree" type="text" value="{{animal.pedigree}}">
+                <option value="">Pedigree</option>
+                <option value="YES">Yes</option>
+                <option value="NO">No</option>
+              </select>
+              {{#if errors.pedigree}}
+              <p>{{ errors.pedigree}}</p>
+              {{/if}}
+            </div>
 
-      <div class="form-group row">
-          <label for="example-number-input" class="col-2 col-form-label">ADDRESS</label>
-          <div class="col-2">
-            <input class="form-control" type="text" name="address" value="{{ animal.address }}"> {{#if errors.address }}
-            <p>{{ errors.address }}</p>
-            {{/if}}
-          </div>
-      </div>
+            <div class="input-field">
+              <label>Achievements</label>
+              <textarea name="achievements" type="text" class="materialize-textarea" value="{{animal.achievements}}"></textarea>
+            </div>
 
-      <div class="form-group row">
-          <label for="example-number-input" class="col-2 col-form-label">LNG</label>
-          <div class="col-2">
-            <input class="form-control" type="string" id="lng" name="lng"> {{#if errors.long }}
-            <p>{{ errors.long }}</p>
-            {{/if}}
-          </div>
-      </div>
+            <div class="input-field">
+              <label>Trainer</label>
+              <input name="trainer" type="text" value="{{animal.trainer}}" class="validate"> {{#if errors.trainer}}
+              <p>{{ errors.trainer}}</p>
+              {{/if}}
+            </div>
 
-      <div class="form-group row">
-          <label for="example-number-input" class="col-2 col-form-label">LAT</label>
-          <div class="col-2">
-            <input class="form-control" type="string" id="lat" name="lat"> {{#if errors.lat }}
-            <p>{{ errors.lat }}</p>
-            {{/if}}
-          </div>
-      </div>
+            <div class="input-field">
+              <label>Owner</label>
+              <input name="ownername" type="text" value="{{animal.ownername}}" class="validate"> {{#if errors.ownername}}
+              <p>{{ errors.ownername}}</p>
+              {{/if}}
+            </div>
 
-      <div class="form-group row">
-          <label for="example-number-input" class="col-2 col-form-label">POSTCODE</label>
-          <div class="col-2">
-            <input class="form-control" type="number" name="postcode" value="{{ animals.postcode }}"> {{#if errors.postcode }}
-            <p>{{ errors.postcode }}</p>
-            {{/if}}
+            <div class="input-field">
+              <label>Address</label>
+              <input name="address" type="text" value="{{animal.address}}" class="validate"> {{#if errors.address}}
+              <p>{{ errors.address}}</p>
+              {{/if}}
+            </div>
+
+            <div class="input-field">
+              <input placeholder="Longitude" name="lng" id="lng" type="string" class="validate"> {{#if errors.lng}}
+              <p>{{ errors.lng}}</p>
+              {{/if}}
+            </div>
+
+            <div class="input-field">
+              <input placeholder="Latitude" name="lat" id="lat" type="string" class="validate"> {{#if errors.lat}}
+              <p>{{ errors.lat}}</p>
+              {{/if}}
+            </div>
+
+            <div class="input-field">
+              <label>Postcode</label>
+              <input name="postcode" type="number" value="{{animal.postcode}}" class="validate"> {{#if errors.postcode}}
+              <p>{{ errors.postcode}}</p>
+              {{/if}}
+            </div>
+
+            <button class="btn-large waves-effect waves-dark pink darken-4" style="width:100%;">
+              <i class="material-icons right">pets</i>Add</button>
+
           </div>
         </div>
-
-        <div class="form-group row">
-          <button type="submit" class="btn btn-success btn-lg">Registro</button>
-        </div>
-
-      </div> <!-- div de cierre -->
-      
-        {{!-- <a href="/animals" /> create!</button> --}}
-      {{!--
-      <input type="submit" value="Instagram" class="btn btn-default btn-sm" /> --}}
+    </div>
+  </div>
   </form>
 
-  </div>
-
+</div>
