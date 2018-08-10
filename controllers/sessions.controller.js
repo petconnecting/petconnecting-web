@@ -4,7 +4,7 @@ const User = require('../model/user.model');
 
 
 module.exports.create = (req, res, next) => {
-  res.render('/', {
+  res.render('auth/login', {
     user: new User()
   });
 }
@@ -14,7 +14,7 @@ module.exports.doCreate = (req, res, next) => {
   const password = req.body.password;
 
   if (!email || !password) {
-    res.render("index", {
+    res.render('auth/login', {
       user: new User(req.body),
       errors: {
         "email": "Error de autentificación",
@@ -33,17 +33,17 @@ module.exports.doCreate = (req, res, next) => {
                 res.redirect('/animals')
               } else {
                 console.log('ENTRO AQUIIII')
-                res.render("sessions/create", {
+                res.render("auth/login", {
                   user: new User(req.body),
                   errors: {
-                    "password": "Wrong password"
+                    "password": "Autentification error"
                   }
                 })
               }
             })
             .catch(error => next(error));
         } else {
-          res.render("sessions/create", {
+          res.render("auth/login", {
             user: new User(req.body),
             errors: error.errors
           })

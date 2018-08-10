@@ -46,25 +46,12 @@
           </button>
         </a>
         {{else}}
-        <form class="formularioMolon" method="POST" action="sessions/create">
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li style="margin:0px 20px">
-              <input placeholder="Email" name="email" type="text" class="validate">{{#if errors.email}}
-              <p>{{ errors.email }}</p>
-              {{/if}}
-            </li>
-            <li style="margin:0px 20px">
-              <input placeholder="Password" name="password" type="password" class="validate">{{#if errors.password}}
-              <p>{{ errors.password }}</p>
-              {{/if}}
-            </li>
-            <li style="margin:0px 20px">
-              <button class="btn waves-effect waves-light" type="submit">
-                Log in
-              </button>
-            </li>
-          </ul>
-        </form>
+
+        <a href="/sessions/create" style="margin:0px 20px">
+          <button class="btn waves-effect waves-light" type="submit">
+            Log in
+          </button>
+        </a>
         {{/if}}
       </div>
 

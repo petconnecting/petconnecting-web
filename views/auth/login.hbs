@@ -1,1 +1,43 @@
-{{!-- En proceso --}}
+<style>
+  p {
+    color: red
+  }
+</style>
+
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+    <div class="card">
+      <div class="card-action pink darken-4 white-text">
+        <h3>Log in</h3>
+      </div>
+
+      <form action="/sessions/create" method="POST">
+        <div class="card-content">
+          <div class="form-field">
+
+
+            <div class="input-field">
+              <label><i class="material-icons left">mail</i>Email</label>
+              <input name="email" type="text" value="" class="validate"> {{#if errors.email }}
+              <p>{{ errors.email }}</p>
+              {{/if}}
+            </div>
+
+            <div class="input-field">
+              <label>Password</label>
+              <input name="password" type="password" value="" class="validate"> {{#if errors.password }}
+              <p>{{ errors.password }}</p>
+              {{/if}}
+            </div>
+
+
+            <button class="btn-large waves-effect waves-dark pink darken-4" style="width:100%;">
+              <i class="material-icons right">pets</i>Enter</button>
+
+          </div>
+        </div>
+    </div>
+  </div>
+  </form>
+
+</div>
