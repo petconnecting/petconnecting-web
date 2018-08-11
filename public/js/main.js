@@ -52,12 +52,12 @@ function startMap() {
 
       animalMarkers.push(newAnimal);
 
-      var infowindow = new google.maps.InfoWindow({
-        content: "<img src='" + petDiv.children[0].src + "'/>"
+      newAnimal.infowindow = new google.maps.InfoWindow({
+        content: "<img width='200px' src='" + petDiv.children[0].src + "'/>"
       });
 
       newAnimal.addListener("click", function() {
-        infowindow.open(map, newAnimal);
+        this.infowindow.open(map, this);
       });
     }
 }

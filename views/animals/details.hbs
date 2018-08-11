@@ -1,25 +1,34 @@
-<h1>ANIMAL DETAILS</h1>
-<a href="/animals/create" class="btn btn-success">New Pet</a>
+<div class="container">
+  <h1>DOG DETAILS</h1>
+  <a href="/animals/create" class="waves-effect waves-light btn">New Pet</a>
+  <a href="/animals" class="waves-effect waves-light btn">back</a>
 
-<div class="card" style="width: 18rem;">
-     <img class="card-img-top" src="{{ animal.image }}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Name: {{ animal.name }}</h5>
-    <p class="card-text">Trainer: {{ animal.trainer}}</p>
-    <p class="card-text">Ownername: {{ animal.ownername }}</p>
-    <p class="card-text">Achievements: {{ animal.achievements }}</p>
-    <p class="card-text">{{ animal.pedigree }}</p>
-
-      <hr>
-    <a href="/animals/{{animal._id}}/edit" class="text-warning">Edit</a>
-     <hr>
-    
-    <a href="/animals" class="btn btn-success">back</a>
-
-    <form action="/animals/{{ animal._id }}/delete" method="post">
-        <button type="submit" class="btn btn-sm btn-outline-danger" data-confirm="Are you sure?">Delete</button>
+  <div class="row">
+    <div class="card medium col s6 pink darken-4 white-text" style="width:260px; height: 530px">
+      <img class="card-img-top" style="width:240px; height: 300px" src="{{ animal.image }}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Name: {{ animal.name }}</h5>
+        <p class="card-text">Trainer: {{ animal.trainer}}</p>
+        <p class="card-text">Ownername: {{ animal.ownername }}</p>
+        <p class="card-text">Achievements: {{ animal.achievements }}</p>
+        <p class="card-text">Pedigree: {{ animal.pedigree }}</p>
+        <p class="card-text">Address: {{animal.address}}</p>
 
         <hr>
-    </form>
+        <a href="/animals/{{this._id}}/edit" class="waves-effect waves-light btn">
+          <i class="material-icons center">edit</i>
+        </a>
+
+        <hr>
+
+      
+
+        <form style="margin-bottom:20px" action="/animals/{{ this._id }}/delete" method="post">
+          <button type="submit" class="waves-effect waves-light btn red" data-confirm="Are you sure?">
+            <i class="material-icons center">delete</i>
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

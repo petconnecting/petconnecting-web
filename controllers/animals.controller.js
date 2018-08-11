@@ -128,7 +128,6 @@ module.exports.solicitarCruce = (req, res, next) => {
     .populate("user")
     .then(animal => {
       if (animal) {
-        console.log("El email de su owner es: ", animal.user.email);
         mailer.solicitudCruce(animal);
         res.redirect("/animals/userlist?mail=true");
       }

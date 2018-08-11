@@ -1,102 +1,86 @@
-<h1>EDIT ANIMAL</h1>
-
 <div class="container">
-    <p class="form-title"> </p>
 
-    <form action="/animals/{{ animal._id }}/edit" method="POST">
-
-            <label for="example-text-input" class="col-2 col-form-label">COLOR</label>
-            <div class="col-10">
-                <input class="form-control" type="text" name="color" value="{{ animal.color }}"> {{#if errors.color }}
-                <p>{{ errors.color }}</p>
-                {{/if}}
-            </div>
-
-            <div class="form-group row">
-                <label for="example-number-input" class="col-2 col-form-label">AGE</label>
-                <div class="col-2">
-                    <input class="form-control" type="number" name="age" value="{{ animal.age }}"> {{#if errors.age }}
-                    <p>{{ errors.age }}</p>
-                    {{/if}}
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">ACHIEVEMENTS</label>
-                <textarea class="form-control" type="text" name="achievements" value="{{ animal.achievements }}" rows="3"></textarea> {{#if errors.achievements }}
-                <p>{{ errors.achievements}}</p>
-                {{/if}}
-            </div>
-
-            <div class="form-group row">
-                <label for="example-number-input" class="col-2 col-form-label">TRAINER</label>
-                <div class="col-2">
-                    <input class="form-control" type="text" name="trainer" value="{{ animal.trainer }}"> {{#if errors.trainer }}
-                    <p>{{ errors.trainer }}</p>
-                    {{/if}}
-                </div>
-
-                <div class="form-group row">
-                    <label for="example-number-input" class="col-2 col-form-label">OWNER</label>
-                    <div class="col-2">
-                        <input class="form-control" type="text" name="ownername" value="{{ animal.ownername }}"> {{#if errors.ownername }}
-                        <p>{{ errors.ownername }}</p>
-                        {{/if}}
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="example-number-input" class="col-2 col-form-label">ADDRESS</label>
-                <div class="col-2">
-                    <input class="form-control" type="text" name="address" value="{{ animal.address }}"> 
-                    {{#if errors.address }}
-                    <p>{{ errors.address }}</p>
-                    {{/if}}
-                </div>
-
-            </div>
-        </div>
-
-          <div class="form-group row">
-                <label for="example-number-input" class="col-2 col-form-label">LNG</label>
-                <div class="col-2">
-                    <input class="form-control" type="string" name="lng" value="{{ animal.lng }}"> 
-                    {{#if errors.address }}
-                    <p>{{ errors.address }}</p>
-                    {{/if}}
-                </div>
-
-            </div>
-        </div>
-          <div class="form-group row">
-                <label for="example-number-input" class="col-2 col-form-label">LAT/label>
-                <div class="col-2">
-                    <input class="form-control" type="string" name="lat" value="{{ animal.lat }}"> 
-                    {{#if errors.address }}
-                    <p>{{ errors.address }}</p>
-                    {{/if}}
-                </div>
-
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="example-number-input" class="col-2 col-form-label">POSTCODE</label>
-            <div class="col-2">
-                <input class="form-control" type="number" name="postcode" value="{{ animal.postcode }}"> {{#if errors.postcode }}
-                <p>{{ errors.postcode }}</p>
-                {{/if}}
-            </div>
-
-        </div>
--->
-        <button type="submit" class="btn btn-default btn-sm">Editar animal</button>
-        <a href="/animals" class="btn btn-success">back</a>
-
-
-
-
+    <h1>EDIT FORM DOG</h1>
 </div>
-</form>
+
+<div class="row">
+    <div class="col s12 m4 offset-m4">
+        <div class="card">
+            <div class="card-action pink darken-4 white-text">
+                <h3>Edit Dog Form</h3>
+            </div>
+
+            <form action="/animals/{{ animal._id }}/edit" method="POST">
+
+                <div class="card-content">
+                    <div class="form-field">
+
+                        <div class="input-field">
+                            <label>Color</label>
+                            <input name="color" type="text" value="{{animal.color}}" class="validate"> {{#if errors.color }}
+                            <p>{{ errors.color }}</p>
+                            {{/if}}
+                        </div>
+
+                        <div class="input-field">
+                            <label>Age</label>
+                            <input name="age" type="number" value="{{animal.age}}" class="validate" min="1" max="20"> {{#if errors.age }}
+                            <p>{{ errors.age }}</p>
+                            {{/if}}
+                        </div>
+
+                        <div class="input-field">
+                            <label>Achievements</label>
+                            <textarea name="achievements" type="text" class="materialize-textarea" value="{{animal.achievements}}"></textarea>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Trainer</label>
+                            <input name="trainer" type="text" value="{{animal.trainer}}" class="validate"> {{#if errors.trainer}}
+                            <p>{{ errors.trainer}}</p>
+                            {{/if}}
+                        </div>
+
+                        <div class="input-field">
+                            <label>Owner</label>
+                            <input name="ownername" type="text" value="{{animal.ownername}}" class="validate"> {{#if errors.ownername}}
+                            <p>{{ errors.ownername}}</p>
+                            {{/if}}
+                        </div>
+
+                        <div class="input-field">
+                            <label>Address</label>
+                            <input name="address" type="text" value="{{animal.address}}" class="validate"> {{#if errors.address}}
+                            <p>{{ errors.address}}</p>
+                            {{/if}}
+                        </div>
+
+                        <div class="input-field">
+                            <input placeholder="Longitude" name="lng" id="lng" type="string" class="validate"> {{#if errors.lng}}
+                            <p>{{ errors.lng}}</p>
+                            {{/if}}
+                        </div>
+
+                        <div class="input-field">
+                            <input placeholder="Latitude" name="lat" id="lat" type="string" class="validate"> {{#if errors.lat}}
+                            <p>{{ errors.lat}}</p>
+                            {{/if}}
+                        </div>
+
+                        <div class="input-field">
+                            <label>Postcode</label>
+                            <input name="postcode" type="number" value="{{animal.postcode}}" class="validate"> {{#if errors.postcode}}
+                            <p>{{ errors.postcode}}</p>
+                            {{/if}}
+                        </div>
+
+                        <button type="submit" class="waves-effect waves-light btn">Save Changes</button>
+                        <a href="/animals" class="waves-effect waves-light btn">Back</a>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

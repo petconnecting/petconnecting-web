@@ -16,9 +16,9 @@ router.post(
   animalsController.doCreate
 );
 
-router.get("/:id/details", animalsController.details);
-router.get("/:id/edit", animalsController.edit);
-router.post("/:id/edit", animalsController.doEdit);
+router.get("/:id/details",userMiddleware.authenticateUser, animalsController.details);
+router.get("/:id/edit",userMiddleware.authenticateUser, animalsController.edit);
+router.post("/:id/edit",userMiddleware.authenticateUser, animalsController.doEdit);
 
 router.get("/:id/delete", animalsController.warnUser);
 
